@@ -59,4 +59,14 @@
     <servlet-name>AlterUserServlet</servlet-name>
     <url-pattern>/AlterUserServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserAscentsServlet</display-name>
+    <servlet-name>UserAscentsServlet</servlet-name>
+    <servlet-class>sevlets.UserAscentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserAscentsServlet</servlet-name>
+    <url-pattern>/UserAscentsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

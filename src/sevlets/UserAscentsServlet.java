@@ -19,13 +19,13 @@ import org.hibernate.classic.Session;
 /**
  * Servlet implementation class UserPage
  */
-public class UserPageServlet extends HttpServlet {
+public class UserAscentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserPageServlet() {
+    public UserAscentsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
