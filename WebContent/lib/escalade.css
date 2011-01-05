@@ -17,7 +17,10 @@ body {
 }
 
 #header h1 {
-	background: #333;
+	background-color: #333;
+	background-image: url(peak.png);
+	background-position: bottom center;
+	background-repeat: no-repeat;
 	color: #ddd;
 	padding: 0.2em 2em;
 	margin: 0;
@@ -29,12 +32,25 @@ body {
 }
 
 #header h2 {
-	background: #ab2;
-	color: #333;
+	background-color: #ab2;
+	background-image: url(climber.png);
+	background-position: top left;
+	background-repeat: no-repeat;
+	color: #000;
 	padding: 0 2em;
 	margin: 0;
 }
-
+#climber-top {
+	background-color: transparent;
+	background-image: url(climber-top.png);
+	background-position: top right;
+	background-repeat: no-repeat;
+	height:128px;
+	position:absolute;
+	right:0;
+	width:76px;
+	margin-top:-1em;
+}
 form input {
 	text-align: center;
 }
@@ -60,6 +76,7 @@ div#user_box {
 	left: 0.4em;
 	color: #bbb;
 	text-align: left;
+	background: #000;
 }
 
 div#user_box a {
@@ -73,7 +90,10 @@ div#user_box a:hover {
 
 h2 {
 	border-top: 2px solid #111;
-	background: #bbb;
+	background-color: #bbb;
+	background-image: url(knot.png);
+	background-position: top left;
+	background-repeat: no-repeat;
 }
 
 h3 { /*font-weight: bolder;

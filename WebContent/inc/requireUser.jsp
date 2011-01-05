@@ -8,5 +8,6 @@
 		RequestDispatcher dispatcher = getServletContext()
 				.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);
+		return;
 	}
 %>

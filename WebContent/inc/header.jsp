@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="me.thebio.escalade.*"%>
 <div id='header'>
-<h1><a href='./'>Peaks</a></h1>
-<h2>A website about climbing</h2>
+	<h1><a href='./'>Peak</a></h1>
+	<h2>The climbers website</h2>
 </div>
+<div id='climber-top'>&nbsp;</div>
 <%
 	String e = "";
 	Object err = request.getSession().getAttribute("error");
@@ -19,7 +20,9 @@
 		%>
 <div id='user_box'>Logged in as <a
 	href='UserPageServlet?username=<%=user.getLogin()%>'><%=user.getLogin()%></a><br />
-<a href='LogoutServlet'>Log out</a> | <a href='settings.jsp'>Settings</a>
+	<a href='LogoutServlet'>Log out</a> |
+	<a href='settings.jsp'>Settings</a> |
+	<a href='ascents.jsp'>Ascents</a>
 </div>
 <%
 	}else{
