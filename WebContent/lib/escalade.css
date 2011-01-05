@@ -40,34 +40,36 @@ form input {
 }
 
 div.error {
-	background : #e99;
+	background: #e99;
 	color: #700;
 	border: 1px solid #700;
 	margin: 1em 5em;
 	padding: 0 0 0.3em 0;
 }
+
 div.error h1 {
 	background: #700;
 	color: #e99;
 	font-size: 100%;
-	margin: 0 0 0.3em 0; 
+	margin: 0 0 0.3em 0;
 }
+
 div#user_box {
-	position:absolute;
-	top:0.2em;
-	left:0.4em;
-	color:#bbb;
+	position: absolute;
+	top: 0.2em;
+	left: 0.4em;
+	color: #bbb;
 	text-align: left;
 }
+
 div#user_box a {
-	color:#fff;
-	text-decoration:none;
+	color: #fff;
+	text-decoration: none;
 }
+
 div#user_box a:hover {
-	text-decoration:underline;
+	text-decoration: underline;
 }
-
-
 
 h2 {
 	border-top: 2px solid #111;

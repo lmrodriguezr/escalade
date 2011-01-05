@@ -8,7 +8,7 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/peaks</property>
 
 		<!-- renseigner l'utilisateur et son mot de passe -->
-		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.username"></property>
 		<property name="hibernate.connection.password"></property>
 
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
