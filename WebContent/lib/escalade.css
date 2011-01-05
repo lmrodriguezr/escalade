@@ -1,0 +1,152 @@
+@CHARSET "UTF-8";
+
+body {
+	margin: 0 0 2em 0;
+	padding: 0;
+	background: #ddd;
+	text-align: center;
+	font-size: 1em;
+	font-family: 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+}
+
+#header {
+	text-align: right;
+	border-bottom: solid 0.3em #111;
+	margin: 0 0 1em 0;
+	padding: 0;
+}
+
+#header h1 {
+	background: #333;
+	color: #ddd;
+	padding: 0.2em 2em;
+	margin: 0;
+}
+
+#header h1 a {
+	color: #ddd;
+	text-decoration: none;
+}
+
+#header h2 {
+	background: #ab2;
+	color: #333;
+	padding: 0 2em;
+	margin: 0;
+}
+
+form input {
+	text-align: center;
+}
+
+div.error {
+	background : #e99;
+	color: #700;
+	border: 1px solid #700;
+	margin: 1em 5em;
+	padding: 0 0 0.3em 0;
+}
+div.error h1 {
+	background: #700;
+	color: #e99;
+	font-size: 100%;
+	margin: 0 0 0.3em 0; 
+}
+div#user_box {
+	position:absolute;
+	top:0.2em;
+	left:0.4em;
+	color:#bbb;
+	text-align: left;
+}
+div#user_box a {
+	color:#fff;
+	text-decoration:none;
+}
+div#user_box a:hover {
+	text-decoration:underline;
+}
+
+
+
+h2 {
+	border-top: 2px solid #111;
+	background: #bbb;
+}
+
+h3 { /*font-weight: bolder;
+		background: #bbb;
+		padding: 0.7em;
+		margin: 1em 6em 1em 6em;
+		display: block */
+	border-bottom: 1px solid #333;
+	text-align: left;
+	margin: 1em 6em 1em 6em;
+	padding: 0 1em;
+	color: #666;
+}
+
+h3 span {
+	font-size: 1.2em;
+	color: #bbb;
+	margin-right: 0.1em;
+}
+
+ul li {
+	list-style: none;
+}
+
+ol li {
+	margin: 0 1em;
+	text-align: left;
+}
+
+table.labs {
+	margin: 1em 6em;
+	text-align: center;
+}
+
+table.labs td {
+	padding: 0.3em;
+	width: 50%;
+}
+
+table.selection {
+	border-collapse: collapse;
+	margin: 1em 4%;
+	width: 92%;
+	border: 1px solid #888;
+	overflow: auto;
+}
+
+table.selection th {
+	background: #888;
+	color: #333;
+	font-weight: bolder;
+	border: 1px solid #888;
+}
+
+table.selection td {
+	border-bottom: solid 1px #888;
+	padding: 0 1em;
+}
+
+table.selection tr:hover td {
+	background: #ccc;
+}
+
+pre {
+	text-align: left;
+	background: #eee;
+	margin: 1em;
+	padding: 1em;
+	border: 1px solid #333;
+	overflow: auto;
+}
+
+div.post {
+	margin: 0 10%;
+	border: 1px solid #333;
+	background: #eee;
+	padding: 0 0.5em;
+}
