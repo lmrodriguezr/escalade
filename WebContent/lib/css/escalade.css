@@ -4,24 +4,25 @@ body {
 	margin: 0 0 2em 0;
 	padding: 0;
 	background-color: #ddd;
-	background-image: url(wall.png);
+	background-image: url(img/wall.png);
 	background-position: top left;
 	background-repeat: repeat-y;
 	text-align: center;
 	font-size: 1em;
 	font-family: 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;
+	min-width: 700px;
 }
 
 #header {
 	text-align: right;
 	border-bottom: solid 0.3em #111;
-	margin: 0 0 1em 0;
+	margin: 0;
 	padding: 0;
 }
 
 #header h1 {
 	background-color: #000;
-	background-image: url(peak.png);
+	background-image: url(img/peak.png);
 	background-position: bottom center;
 	background-repeat: no-repeat;
 	color: #ddd;
@@ -36,7 +37,7 @@ body {
 
 #header h2 {
 	background-color: #ab2;
-	background-image: url(climber.png);
+	background-image: url(img/climber.png);
 	background-position: top left;
 	background-repeat: no-repeat;
 	color: #000;
@@ -45,22 +46,60 @@ body {
 }
 #climber-top {
 	background-color: transparent;
-	background-image: url(climber-top.png);
+	background-image: url(img/climber-top.png);
 	background-position: top right;
 	background-repeat: no-repeat;
 	height:128px;
 	position:absolute;
 	right:0;
 	width:76px;
-	margin-top:-1em;
 }
+table#wrapper {
+	width: 100%;
+	text-alignment: center;
+	margin:0;
+	padding: 0;
+	border-collapse: collapse;
+}
+table#wrapper td#user_menu {
+	width: 20%;
+	border-right: 2px solid black;
+	vertical-align: top;
+	padding:0;
+	border-top: 2px solid black;
+}
+table#wrapper td#user_menu ul {
+	list-style: none;
+	position: relative;
+	padding: 1em 0.4em 0.3em 45px;
+	margin:0;
+}
+table#wrapper td#user_menu ul li {
+	background: #999;
+	padding: 0.3em;
+	border-top: 2px solid black;
+}
+table#wrapper td#user_menu ul li:hover {
+	background: #ccc;
+}
+table#wrapper td#user_menu ul li a {
+	color: black;
+	text-decoration: none;
+}
+table#wrapper td#content {
+	padding-top: 1em;
+	margin:0;
+	border-top: 2px solid black;
+}
+
+
 form input {
 	text-align: center;
 }
 
 div.error {
 	background-color: #e99;
-	background-image: url(error.png);
+	background-image: url(img/error.png);
 	background-position: bottom left;
 	background-repeat: no-repeat;
 	color: #700;
@@ -96,7 +135,7 @@ div#user_box a:hover {
 
 h2 {
 /*	background-color: #bbb;*/
-	background-image: url(knot.png);
+	background-image: url(img/knot.png);
 	background-position: top left;
 	background-repeat: no-repeat;
 	padding-top:20px;

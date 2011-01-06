@@ -42,23 +42,21 @@ public class UserPageServlet extends HttpServlet {
 				.buildSessionFactory();
 		Session sessionDB = null;
 		RequestDispatcher dispatcher;
-		dispatcher = getServletContext().getRequestDispatcher("/userPage.jsp");
-		dispatcher.forward(request, response);
 		try {
 			sessionDB = sessionFactory.openSession();
 			List<Utilisateur> users = sessionDB.createQuery(
 					"from Utilisateur as u where u.login = ?").setString(0, login).list();
-			if(users.size()==0) return;
-			Utilisateur user = users.get(0);
-			
-			if(user == null){
+			if(users.size()==0) {
 				request.getSession().setAttribute("error", "The user does not exist");
+				dispatcher = getServletContext().getRequestDispatcher("/");
 			}else{
+				Utilisateur user = users.get(0);
 				request.getSession().setAttribute("requestedUser", user);
+				dispatcher = getServletContext().getRequestDispatcher("/userPage.jsp");
 			}
+			dispatcher.forward(request, response);
 			
 			sessionDB.flush();
-			
 		} finally {
 			if (sessionDB != null) {
 				// silent close session

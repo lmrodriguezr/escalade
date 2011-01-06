@@ -1,13 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<%@ include file="inc/libs.jsp"%>
-<title>Peak | New User</title>
-</head>
-<body>
-<%@ include file="inc/header.jsp"%>
+<jsp:include page="inc/header.jsp"/>
 <%
 		Object login = request.getSession().getAttribute("login");
 		Object email = request.getSession().getAttribute("email");
@@ -52,5 +45,4 @@
 <p><input type='submit' name='submit' value='Create user' /> or <a
 	href='login.jsp'>log in</a>.</p>
 </form>
-</body>
-</html>
+<jsp:include page="inc/footer.jsp"/>
