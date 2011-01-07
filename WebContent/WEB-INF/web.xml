@@ -69,4 +69,54 @@
     <servlet-name>UserAscentsServlet</servlet-name>
     <url-pattern>/UserAscentsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CountriesJsonServlet</display-name>
+    <servlet-name>CountriesJsonServlet</servlet-name>
+    <servlet-class>sevlets.CountriesJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CountriesJsonServlet</servlet-name>
+    <url-pattern>/CountriesJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MountainsJsonServlet</display-name>
+    <servlet-name>MountainsJsonServlet</servlet-name>
+    <servlet-class>sevlets.MountainsJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MountainsJsonServlet</servlet-name>
+    <url-pattern>/MountainsJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PathsJsonServlet</display-name>
+    <servlet-name>PathsJsonServlet</servlet-name>
+    <servlet-class>sevlets.PathsJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PathsJsonServlet</servlet-name>
+    <url-pattern>/PathsJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SectorsJsonServlet</display-name>
+    <servlet-name>SectorsJsonServlet</servlet-name>
+    <servlet-class>sevlets.SectorsJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SectorsJsonServlet</servlet-name>
+    <url-pattern>/SectorsJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CitiesJsonServlet</display-name>
+    <servlet-name>CitiesJsonServlet</servlet-name>
+    <servlet-class>sevlets.CitiesJsonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CitiesJsonServlet</servlet-name>
+    <url-pattern>/CitiesJsonServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

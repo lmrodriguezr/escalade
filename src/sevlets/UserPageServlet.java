@@ -29,14 +29,16 @@ public class UserPageServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doGet(request, response);
+    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String login = request.getParameter("username");
-		
+		Utilisateur user = (Utilisateur)request.getSession().getAttribute("loggedUser");
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure(
 				Thread.currentThread().getContextClassLoader().getResource("hibernate.mysql.cfg.xml"))
 				.buildSessionFactory();
@@ -46,13 +48,15 @@ public class UserPageServlet extends HttpServlet {
 			sessionDB = sessionFactory.openSession();
 			List<Utilisateur> users = sessionDB.createQuery(
 					"from Utilisateur as u where u.login = ?").setString(0, login).list();
-			if(users.size()==0) {
-				request.getSession().setAttribute("error", "The user does not exist");
-				dispatcher = getServletContext().getRequestDispatcher("/");
-			}else{
-				Utilisateur user = users.get(0);
+			if(users.size()>0) user = users.get(0);
+			else if(login!=null) request.getSession().setAttribute("error", "The user does not exist");
+			
+			if(user!=null) {
 				request.getSession().setAttribute("requestedUser", user);
 				dispatcher = getServletContext().getRequestDispatcher("/userPage.jsp");
+			}else{
+				request.getSession().setAttribute("error", "The user does not exist");
+				dispatcher = getServletContext().getRequestDispatcher("/peaks.jsp");
 			}
 			dispatcher.forward(request, response);
 			

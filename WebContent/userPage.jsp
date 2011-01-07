@@ -7,10 +7,14 @@
 	request.getSession().removeAttribute("requestedUser");
 	Grimpeur user = (Grimpeur) ((Grimpeur)request.getSession().getAttribute("loggedUser"));
 	if(u==null) {
-		u = user;
+		//u = user;
+		%> <jsp:forward page="/UserPageServlet"/> <%
+		return;
 	}
 	if(u.getLogin().equals(user.getLogin())){
-		%><a href='settings.jsp'>Edit</a><%
+		%><h1>My Profile</h1><a href='settings.jsp'>Edit</a><%
+	}else{
+		%><h1>User Profile</h1><%
 	}
 %>
 <table class='selection'>

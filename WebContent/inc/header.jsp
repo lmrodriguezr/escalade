@@ -5,6 +5,12 @@
 <head>
 <%@ include file="libs.jsp"%>
 <title>Peak</title>
+<script>
+	$(function(){
+		$('.datepicker').datepicker({ defaultDate: 0, maxDate: 0 });
+		$('.starsrating').raty({path: 'lib/img/'}); //  http://www.wbotelhos.com/raty/ 
+	});
+</script>
 </head>
 <body>
 <div id='header'>
@@ -34,7 +40,7 @@
 <table id='wrapper'><tr><td id='user_menu'>
 	<ul id='user_menu_list'>
 		<li><a href='userPage.jsp'>Profile</a></li>
-		<li><a href='ascents.jsp'>Ascents</a></li>
+		<li><a href='userAscents.jsp'>Ascents</a></li>
 		<li><a>Map</a></li>
 		<li><a>Stats</a></li>
 	</ul>

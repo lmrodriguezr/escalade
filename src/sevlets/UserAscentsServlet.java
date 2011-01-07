@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import me.thebio.escalade.Ascension;
 import me.thebio.escalade.Utilisateur;
 
 import org.hibernate.HibernateException;
@@ -29,36 +30,41 @@ public class UserAscentsServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	doGet(request, response);
+    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String login = request.getParameter("username");
-		
+		Utilisateur user = (Utilisateur)request.getSession().getAttribute("loggedUser");
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure(
 				Thread.currentThread().getContextClassLoader().getResource("hibernate.mysql.cfg.xml"))
 				.buildSessionFactory();
 		Session sessionDB = null;
 		RequestDispatcher dispatcher;
-		dispatcher = getServletContext().getRequestDispatcher("/userPage.jsp");
-		dispatcher.forward(request, response);
 		try {
 			sessionDB = sessionFactory.openSession();
 			List<Utilisateur> users = sessionDB.createQuery(
 					"from Utilisateur as u where u.login = ?").setString(0, login).list();
-			if(users.size()==0) return;
-			Utilisateur user = users.get(0);
+			if(users.size()>0) user = users.get(0);
+			else if(login!=null) request.getSession().setAttribute("error", "The user does not exist");
 			
-			if(user == null){
-				request.getSession().setAttribute("error", "The user does not exist");
-			}else{
+			if(user!=null) {
 				request.getSession().setAttribute("requestedUser", user);
+				List<Ascension> ascs = sessionDB.createQuery(
+					"from Ascension as a where a.grimpeur = ?").setEntity(0, user).list();
+				request.getSession().setAttribute("requestedAscents", ascs);
+				dispatcher = getServletContext().getRequestDispatcher("/userAscents.jsp");
+			}else{
+				request.getSession().setAttribute("error", "The user does not exist");
+				dispatcher = getServletContext().getRequestDispatcher("/peaks.jsp");
 			}
+			dispatcher.forward(request, response);
 			
 			sessionDB.flush();
-			
 		} finally {
 			if (sessionDB != null) {
 				// silent close session

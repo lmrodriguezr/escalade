@@ -12,6 +12,7 @@
 		int poids = g.getPoids();
 		int taille = g.getTaille();
 %>
+<h1>Profile edition</h1>
 <form method='post' action='AlterUserServlet'>
 <h2>Basic user data</h2>
 <label>User-name*<br />
