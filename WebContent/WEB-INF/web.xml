@@ -2,12 +2,8 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Peaks</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>peaks.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -71,52 +67,82 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CountriesJsonServlet</display-name>
-    <servlet-name>CountriesJsonServlet</servlet-name>
-    <servlet-class>sevlets.CountriesJsonServlet</servlet-class>
+    <display-name>CountriesServlet</display-name>
+    <servlet-name>CountriesServlet</servlet-name>
+    <servlet-class>sevlets.CountriesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CountriesJsonServlet</servlet-name>
-    <url-pattern>/CountriesJsonServlet</url-pattern>
+    <servlet-name>CountriesServlet</servlet-name>
+    <url-pattern>/CountriesServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>MountainsJsonServlet</display-name>
-    <servlet-name>MountainsJsonServlet</servlet-name>
-    <servlet-class>sevlets.MountainsJsonServlet</servlet-class>
+    <display-name>MountainsServlet</display-name>
+    <servlet-name>MountainsServlet</servlet-name>
+    <servlet-class>sevlets.MountainsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>MountainsJsonServlet</servlet-name>
-    <url-pattern>/MountainsJsonServlet</url-pattern>
+    <servlet-name>MountainsServlet</servlet-name>
+    <url-pattern>/MountainsServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>PathsJsonServlet</display-name>
-    <servlet-name>PathsJsonServlet</servlet-name>
-    <servlet-class>sevlets.PathsJsonServlet</servlet-class>
+    <display-name>ApproachesServlet</display-name>
+    <servlet-name>ApproachesServlet</servlet-name>
+    <servlet-class>sevlets.ApproachesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>PathsJsonServlet</servlet-name>
-    <url-pattern>/PathsJsonServlet</url-pattern>
+    <servlet-name>ApproachesServlet</servlet-name>
+    <url-pattern>/ApproachesServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>SectorsJsonServlet</display-name>
-    <servlet-name>SectorsJsonServlet</servlet-name>
-    <servlet-class>sevlets.SectorsJsonServlet</servlet-class>
+    <display-name>SectorsServlet</display-name>
+    <servlet-name>SectorsServlet</servlet-name>
+    <servlet-class>sevlets.SectorsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SectorsJsonServlet</servlet-name>
-    <url-pattern>/SectorsJsonServlet</url-pattern>
+    <servlet-name>SectorsServlet</servlet-name>
+    <url-pattern>/SectorsServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>CitiesJsonServlet</display-name>
-    <servlet-name>CitiesJsonServlet</servlet-name>
-    <servlet-class>sevlets.CitiesJsonServlet</servlet-class>
+    <display-name>CitiesServlet</display-name>
+    <servlet-name>CitiesServlet</servlet-name>
+    <servlet-class>sevlets.CitiesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>CitiesJsonServlet</servlet-name>
-    <url-pattern>/CitiesJsonServlet</url-pattern>
+    <servlet-name>CitiesServlet</servlet-name>
+    <url-pattern>/CitiesServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UsersServlet</display-name>
+    <servlet-name>UsersServlet</servlet-name>
+    <servlet-class>sevlets.UsersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UsersServlet</servlet-name>
+    <url-pattern>/UsersServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AscentsServlet</display-name>
+    <servlet-name>AscentsServlet</servlet-name>
+    <servlet-class>sevlets.AscentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AscentsServlet</servlet-name>
+    <url-pattern>/AscentsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateAscentServlet</display-name>
+    <servlet-name>CreateAscentServlet</servlet-name>
+    <servlet-class>sevlets.CreateAscentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateAscentServlet</servlet-name>
+    <url-pattern>/CreateAscentServlet</url-pattern>
   </servlet-mapping>
 </web-app>

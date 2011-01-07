@@ -4,7 +4,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import me.thebio.escalade.Voie;
+import me.thebio.escalade.Falaise;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
@@ -20,13 +20,13 @@ import java.util.List;
  * Servlet implementation class for Servlet: CountriesJsonServlet
  *
  */
- public class PathsJsonServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+ public class CitiesServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
    static final long serialVersionUID = 1L;
    
     /* (non-Java-doc)
 	 * @see javax.servlet.http.HttpServlet#HttpServlet()
 	 */
-	public PathsJsonServlet() {
+	public CitiesServlet() {
 		super();
 	}   	
 	
@@ -41,26 +41,44 @@ import java.util.List;
 		Session sessionDB = null;
 		try {
 			sessionDB = sessionFactory.openSession();
-			String json = "\""+request.getParameter("term")+"\"";
-			List<Voie> paths = sessionDB.createQuery(
-					"from Voie as v where v.nom like ? and " +
-					"v.secteur.falaise.pays.nom = ? and " +
-					"v.secteur.falaise.nom = ? and " +
-					"v.secteur.nom = ?").
+
+			String format = request.getParameter("format");
+			if(format==null) format = "json";
+			String term = request.getParameter("term");
+			if(term==null) term = "";
+			int limit;
+			if(request.getParameter("limit")==null) limit = 1000;
+			else limit = Integer.parseInt(request.getParameter("limit"));
+			
+			String json = "";
+			String html = "<ul>";
+			
+			List<Falaise> mountains = sessionDB.createQuery(
+					"from Falaise as f where f.ville like ? and " +
+					"f.pays.nom = ?").
 						setString(0, "%" + request.getParameter("term") + "%").
 						setString(1, request.getParameter("country")).
-						setString(2, request.getParameter("mountain")).
-						setString(3, request.getParameter("sector")).list();
-			for(Iterator<Voie> it = paths.iterator(); it.hasNext(); ){
-				Voie path = it.next();
-				json += ", \"" + path.getNom() + "\"";
+						setMaxResults(limit).list();
+			for(Iterator<Falaise> it = mountains.iterator(); it.hasNext(); ){
+				Falaise mountain = it.next();
+				String ville = "\"" + mountain.getVille() + "\"";
+				if(json.indexOf(ville)<0){
+					json += ville + (it.hasNext()?", ":"");
+					html += "<li>"+ville+"</li>\n";
+				}
 			}
+			sessionDB.flush();
 			
+			html += "</ul>";
+			json = "[" + json + "]";
 			
 			PrintWriter out = response.getWriter();
-		    out.println("["+json+"]");
+			if(format.equalsIgnoreCase("html")){
+				out.println(html);
+			}else{
+				out.println(json);
+			}
 			
-			sessionDB.flush();
 		} finally {
 			if (sessionDB != null) {
 				// silent close session

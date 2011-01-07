@@ -20,13 +20,13 @@ import java.util.List;
  * Servlet implementation class for Servlet: CountriesJsonServlet
  *
  */
- public class SectorsJsonServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+ public class SectorsServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
    static final long serialVersionUID = 1L;
    
     /* (non-Java-doc)
 	 * @see javax.servlet.http.HttpServlet#HttpServlet()
 	 */
-	public SectorsJsonServlet() {
+	public SectorsServlet() {
 		super();
 	}   	
 	
@@ -41,24 +41,42 @@ import java.util.List;
 		Session sessionDB = null;
 		try {
 			sessionDB = sessionFactory.openSession();
-			String json = "\""+request.getParameter("term")+"\"";
+
+			String format = request.getParameter("format");
+			if(format==null) format = "json";
+			String term = request.getParameter("term");
+			if(term==null) term = "";
+			int limit;
+			if(request.getParameter("limit")==null) limit = 1000;
+			else limit = Integer.parseInt(request.getParameter("limit"));
+			
+			String json = "";
+			String html = "<ul>";
+			
 			List<Secteur> sectors = sessionDB.createQuery(
 					"from Secteur as s where s.nom like ? and " +
 					"s.falaise.pays.nom = ? and " +
 					"s.falaise.nom = ?").
 						setString(0, "%" + request.getParameter("term") + "%").
 						setString(1, request.getParameter("country")).
-						setString(2, request.getParameter("mountain")).list();
+						setString(2, request.getParameter("mountain")).
+						setMaxResults(limit).list();
 			for(Iterator<Secteur> it = sectors.iterator(); it.hasNext(); ){
 				Secteur sector = it.next();
-				json += ", \"" + sector.getNom() + "\"";
+				json += "\"" + sector.getNom() + "\"" + (it.hasNext()?", ":"");
+				html += "<li>" + sector.getNom() + "</li>";
 			}
+			sessionDB.flush();
 			
+			html += "</ul>";
+			json = "[" + json + "]";
 			
 			PrintWriter out = response.getWriter();
-		    out.println("["+json+"]");
-			
-			sessionDB.flush();
+			if(format.equalsIgnoreCase("html")){
+				out.println(html);
+			}else{
+				out.println(json);
+			}
 		} finally {
 			if (sessionDB != null) {
 				// silent close session

@@ -4,11 +4,11 @@
 <%@ include file="inc/requireUser.jsp"%>
 
 <h1>Register Ascent</h1>
-<form method='post' action='NewAscentServlet'>
+<form method='post' action='CreateAscentServlet'>
 
 <h2>Your experience</h2>
 <label>Date*<br />
-<input type='text' name='date' class='datepicker' value='' /></label><br />
+<input type='text' name='date' class='datepicker' /></label><br />
 <br />
 
 Rate*:<br/>
@@ -16,75 +16,81 @@ Rate*:<br/>
 <br/><br/>
 
 <label>Comments<br />
-<textarea cols='50' rows='4'></textarea></label><br />
+<textarea cols='50' rows='4' name='comment'></textarea></label><br />
 <br />
 
 <h2>The place</h2>
 <script>
 $(function(){
-	$('#country-selector').autocomplete({source:'CountriesJsonServlet'});
+	$('#country-selector').autocomplete({
+				source:'CountriesServlet?format=json',
+				minLength:0,
+				close: function(event,ui){ $('#country-selector').change() }
+	});
 	$('#country-selector').change(function(){
+		$('#city-selector').val("");
 		if($('#country-selector').val()){
 			$('#city-selector').attr('readonly', false);
 			$('#city-selector').autocomplete({
-				source:'CitiesJsonServlet?country='+$('#country-selector').val()
+				source:'CitiesServlet?format=json&country='+$('#country-selector').val(),
+				minLength:0,
+				close: function(event,ui){ $('#city-selector').change() }
 			});
 		}else{
 			$('#city-selector').attr('readonly', true);
 		}
 	});
 	$('#city-selector').change(function(){
+		$('#mountain-selector').val("");
 		if($('#city-selector').val()){
-			$('#mountain-selector').attr('readonly', false);
 			$('#mountain-selector').autocomplete({
-				source:'MountainsJsonServlet?country='+$('#country-selector').val() +
-					"&city=" + $('#city-selector').val()
+				source:'MountainsServlet?format=json&country='+$('#country-selector').val() +
+					"&city=" + $('#city-selector').val(),
+				minLength:0,
+				close: function(event,ui){ $('#mountain-selector').change() }
 			});
-		}else{
-			$('#mountain-selector').attr('readonly', true);
 		}
 	});
 	$('#mountain-selector').change(function(){
+		$('#sector-selector').val("");
 		if($('#mountain-selector').val()){
-			$('#sector-selector').attr('readonly', false);
 			$('#sector-selector').autocomplete({
-				source:'SectorsJsonServlet?mountain='+$('#mountain-selector').val() +
+				source:'SectorsServlet?format=json&mountain='+$('#mountain-selector').val() +
 					"&country=" + $('#country-selector').val() +
-					"&city=" + $('#city-selector').val()
+					"&city=" + $('#city-selector').val(),
+				minLength:0,
+				close: function(event,ui){ $('#sector-selector').change() }
 			});
-		}else{
-			$('#sector-selector').attr('readonly', true);
 		}
 	});
 	$('#sector-selector').change(function(){
+		$('#approach-selector').val("");
 		if($('#sector-selector').val()){
-			$('#path-selector').attr('readonly', false);
-			$('#path-selector').autocomplete({
-				source:'PathsJsonServlet?sector='+$('#sector-selector').val() +
+			$('#approach-selector').autocomplete({
+				source:'ApproachesServlet?format=json&sector='+$('#sector-selector').val() +
 					"&country=" + $('#country-selector').val() +
 					"&city=" + $('#city-selector').val() +
-					"&mountain=" + $('#mountain-selector').val()
+					"&mountain=" + $('#mountain-selector').val(),
+				minLength:0
 			});
-		}else{
-			$('#path-selector').attr('readonly', true);
 		}
 	});
 });
 </script>
-<label>Country:<br/>
+<label>Country*:<br/>
 <input type='text' name='pays' id='country-selector' /></label><br/><br/>
 
-<label>City:<br/>
-<input type='text' name='pays' id='city-selector' readonly="readonly" /></label><br/><br/>
+<label>City*:<br/>
+<input type='text' name='ville' id='city-selector' /></label><br/><br/>
 
-<label>Mountain:<br/>
-<input type='text' name='falaise' id='mountain-selector' readonly="readonly" /></label><br/><br/>
+<label>Mountain*:<br/>
+<input type='text' name='falaise' id='mountain-selector' /></label><br/><br/>
 
-<label>Sector:<br/>
-<input type='text' name='secteur' id='sector-selector' readonly="readonly" /></label><br/><br/>
+<label>Sector*:<br/>
+<input type='text' name='secteur' id='sector-selector' /></label><br/><br/>
 
-<label>Path:<br/>
-<input type='text' name='voie' id='path-selector' readonly="readonly" /></label><br/><br/>
+<label>Approach*:<br/>
+<input type='text' name='voie' id='approach-selector' /></label><br/><br/>
 
 <h2>Difficulty</h2>
 <script>
@@ -126,6 +132,7 @@ Category: <b id='difficulty'>3A</b><br/><br/>
 	<option value='' selected="selected"> </option>
 	<option value='-'>-</option>
 </select><br/>
-
+<br/><br/>
+<input type='submit' value='Register' />
 </form>
 <jsp:include page="inc/footer.jsp"/>

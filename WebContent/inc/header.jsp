@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id='header'>
-	<h1><a href='./'>Peak</a></h1>
+	<h1><a href='peaks.jsp'>Peak</a></h1>
 	<h2>The climbers web site</h2>
 </div>
 <div id='climber-top'>&nbsp;</div>
@@ -42,7 +42,7 @@
 		<li><a href='userPage.jsp'>Profile</a></li>
 		<li><a href='userAscents.jsp'>Ascents</a></li>
 		<li><a>Map</a></li>
-		<li><a>Stats</a></li>
+		<li><a>Statistics</a></li>
 	</ul>
 	<script>
 		$('#user_menu_list').scrollFollow();

@@ -20,13 +20,13 @@ import java.util.List;
  * Servlet implementation class for Servlet: CountriesJsonServlet
  *
  */
- public class CitiesJsonServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
+ public class MountainsServlet extends javax.servlet.http.HttpServlet implements javax.servlet.Servlet {
    static final long serialVersionUID = 1L;
    
     /* (non-Java-doc)
 	 * @see javax.servlet.http.HttpServlet#HttpServlet()
 	 */
-	public CitiesJsonServlet() {
+	public MountainsServlet() {
 		super();
 	}   	
 	
@@ -41,23 +41,40 @@ import java.util.List;
 		Session sessionDB = null;
 		try {
 			sessionDB = sessionFactory.openSession();
-			String json = "\""+request.getParameter("term")+"\"";
+
+			String format = request.getParameter("format");
+			if(format==null) format = "json";
+			String term = request.getParameter("term");
+			if(term==null) term = "";
+			int limit;
+			if(request.getParameter("limit")==null) limit = 1000;
+			else limit = Integer.parseInt(request.getParameter("limit"));
+			
+			String json = "";
+			String html = "<ul>";
+			
 			List<Falaise> mountains = sessionDB.createQuery(
 					"from Falaise as f where f.nom like ? and " +
 					"f.pays.nom = ?").
 						setString(0, "%" + request.getParameter("term") + "%").
-						setString(1, request.getParameter("country")).list();
+						setString(1, request.getParameter("country")).
+						setMaxResults(limit).list();
 			for(Iterator<Falaise> it = mountains.iterator(); it.hasNext(); ){
 				Falaise mountain = it.next();
-				String ville = "\"" + mountain.getVille() + "\"";
-				if(json.indexOf(ville)<=0) json += ", " + ville;
+				json += "\"" + mountain.getNom() + "\"" + (it.hasNext()?", ":"");
+				html += "<li>" + mountain.getNom() + "</li>";
 			}
+			sessionDB.flush();
 			
+			html += "</ul>";
+			json = "[" + json + "]";
 			
 			PrintWriter out = response.getWriter();
-		    out.println("["+json+"]");
-			
-			sessionDB.flush();
+			if(format.equalsIgnoreCase("html")){
+				out.println(html);
+			}else{
+				out.println(json);
+			}
 		} finally {
 			if (sessionDB != null) {
 				// silent close session
