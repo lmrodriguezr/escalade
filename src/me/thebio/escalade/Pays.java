@@ -60,6 +60,9 @@ public class Pays {
 
 	@Override
 	public String toString() {
-		return "pays(nom=" + nom + ")";
+		return "pays(id=" + getId() + ", nom=" + getNom() + ")";
+	}
+	public String toJson() {
+		return "{\"id\": "+getId()+", \"nom\": \""+getNom()+"\"}";
 	}
 }

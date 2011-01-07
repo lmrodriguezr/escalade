@@ -49,29 +49,51 @@ import java.util.List;
 			int limit;
 			if(request.getParameter("limit")==null) limit = 1000;
 			else limit = Integer.parseInt(request.getParameter("limit"));
+			String country = request.getParameter("country");
+			if(country==null) country = "%";
+			String city = request.getParameter("city");
+			if(city==null) city = "%";
+			String username = request.getParameter("user");
+			if(username==null) username = "%";
 			
 			String json = "";
+			String complete = "";
 			String html = "<ul>";
 			
 			List<Falaise> mountains = sessionDB.createQuery(
-					"from Falaise as f where f.nom like ? and " +
-					"f.pays.nom = ?").
-						setString(0, "%" + request.getParameter("term") + "%").
-						setString(1, request.getParameter("country")).
+					"select distinct f " +
+					"from Falaise f, Secteur s, Voie v, Ascension a, Grimpeur g " +
+					"where f.nom like ? and " +
+					"f.ville like ? and " +
+					"f.pays.nom like ? and " +
+					"f = s.falaise and " +
+					"s = v.secteur and " +
+					"v = a.voie and " +
+					"a in elements(g.ascensions) and " +
+					"g.login like ?").
+						setString(0, "%" + term + "%").
+						setString(1, city).
+						setString(2, country).
+						setString(3, username).
 						setMaxResults(limit).list();
 			for(Iterator<Falaise> it = mountains.iterator(); it.hasNext(); ){
+				
 				Falaise mountain = it.next();
 				json += "\"" + mountain.getNom() + "\"" + (it.hasNext()?", ":"");
 				html += "<li>" + mountain.getNom() + "</li>";
+				complete += mountain.toJson() + (it.hasNext()?", ":"");
 			}
 			sessionDB.flush();
 			
 			html += "</ul>";
 			json = "[" + json + "]";
+			complete = "{\"items\": [" + complete + "]}";
 			
 			PrintWriter out = response.getWriter();
 			if(format.equalsIgnoreCase("html")){
 				out.println(html);
+			}else if(format.equalsIgnoreCase("json-complete")) {
+				out.println(complete);
 			}else{
 				out.println(json);
 			}

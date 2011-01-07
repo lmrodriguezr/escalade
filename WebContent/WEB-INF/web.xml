@@ -145,4 +145,14 @@
     <servlet-name>CreateAscentServlet</servlet-name>
     <url-pattern>/CreateAscentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MapServlet</display-name>
+    <servlet-name>MapServlet</servlet-name>
+    <servlet-class>sevlets.MapServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MapServlet</servlet-name>
+    <url-pattern>/MapServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

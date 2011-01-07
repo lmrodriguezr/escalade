@@ -53,7 +53,7 @@ import java.util.List;
 			
 			String json = "";
 			String html = "<ul>";
-			String table = "<table class='selection'><th>Date</th><th>Country</th>" +
+			String table = "<table class='selection'><tr><th>Date</th><th>Country</th>" +
 					"<th>Mountain</th><th>Sector</th><th>Path</th><th>User</th>" +
 					"<th>Comments</th></tr>";
 			

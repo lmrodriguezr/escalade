@@ -98,5 +98,9 @@ public class Falaise {
 		return "falaise(id=" + getId() + "nom=" + getNom() +
 				",ville=" + getVille() + ",pays=" + getPays().toString() + ");";
 	}
+	public String toJson() {
+		return "{\"id\": "+getId()+", \"nom\": \""+getNom()+"\", " +
+				"\"ville\": \""+getVille()+"\", \"pays\": "+getPays().toJson()+"}";
+	}
 
 }

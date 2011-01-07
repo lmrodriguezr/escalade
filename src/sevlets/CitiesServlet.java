@@ -56,7 +56,7 @@ import java.util.List;
 			List<Falaise> mountains = sessionDB.createQuery(
 					"from Falaise as f where f.ville like ? and " +
 					"f.pays.nom = ?").
-						setString(0, "%" + request.getParameter("term") + "%").
+						setString(0, "%" + term + "%").
 						setString(1, request.getParameter("country")).
 						setMaxResults(limit).list();
 			for(Iterator<Falaise> it = mountains.iterator(); it.hasNext(); ){

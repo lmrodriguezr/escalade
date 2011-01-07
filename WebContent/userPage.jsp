@@ -31,4 +31,9 @@
 		<td><%= u.getPoids() %></td>
 	</tr>
 </table>
+<h2>My registered mountains</h2>
+<%
+	String mapRq = "inc/map.jsp?user=" + u.getLogin();
+%>
+<jsp:include page="<%= mapRq %>"></jsp:include>
 <jsp:include page="inc/footer.jsp"/>

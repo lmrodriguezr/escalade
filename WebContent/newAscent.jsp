@@ -105,7 +105,7 @@ $(function(){
 	$('#degree-selector').slider({
 		value: 3,
 		min: 1,
-		max: 7,
+		max: 8,
 		slide: function( event, ui ) {
 				$( "#degree-value" ).val( ui.value );
 				setDifficulty();

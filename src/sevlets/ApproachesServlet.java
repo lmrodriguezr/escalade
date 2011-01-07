@@ -56,12 +56,14 @@ import java.util.List;
 			List<Voie> approaches = sessionDB.createQuery(
 					"from Voie as v where v.nom like ? and " +
 					"v.secteur.falaise.pays.nom = ? and " +
+					"v.secteur.falaise.ville = ? and " +
 					"v.secteur.falaise.nom = ? and " +
 					"v.secteur.nom = ?").
-						setString(0, "%" + request.getParameter("term") + "%").
+						setString(0, "%" + term + "%").
 						setString(1, request.getParameter("country")).
-						setString(2, request.getParameter("mountain")).
-						setString(3, request.getParameter("sector")).
+						setString(2, request.getParameter("city")).
+						setString(3, request.getParameter("mountain")).
+						setString(4, request.getParameter("sector")).
 						setMaxResults(limit).list();
 			for(Iterator<Voie> it = approaches.iterator(); it.hasNext(); ){
 				Voie approach = it.next();
