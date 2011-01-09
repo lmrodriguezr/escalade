@@ -38,7 +38,7 @@ public class Falaise {
 	@OneToMany(mappedBy="falaise")
 	private Set<Secteur> secteurs = new HashSet<Secteur>();
 
-	@ManyToMany
+	@ManyToMany(mappedBy="falaises")
 	private Set<Grimpeur> grimpeurs = new HashSet<Grimpeur>();
 
 	public Set<Grimpeur> getGrimpeurs() {

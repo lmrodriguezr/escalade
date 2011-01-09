@@ -132,5 +132,10 @@ public class Ascension {
 				+ ",grimpeur=" + grimpeur.toString() + ")");
 		return sb.toString();
 	}
+	public String toJson() {
+		return "{\"id\": "+getId()+", \"date\": \""+getDate().toString().substring(0, 11)+"\", " +
+				"\"etoiles\": \""+getEtoiles()+"\", \"cotation\": \""+getCotation().getCode()+"\"," +
+				"\"grimpeur\": "+getGrimpeur().toJson()+"}";
+	}
 
 }

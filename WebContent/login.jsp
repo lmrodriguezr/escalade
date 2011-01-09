@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="inc/header.jsp"/>
+<%@ include file="inc/header.jsp" %>
+
 <form method='post' action='LoginServlet'><label>Username<br />
 <input type='text' name='login' /></label><br />
 <br />

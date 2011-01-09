@@ -1,16 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="me.thebio.escalade.*"%>
+<%@ taglib uri="/WEB-INF/peak.tld" prefix="peak" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ include file="libs.jsp"%>
 <title>Peak</title>
-<script>
-	$(function(){
-		$('.datepicker').datepicker({ defaultDate: 0, maxDate: 0 });
-		$('.starsrating').raty({path: 'lib/img/'}); //  http://www.wbotelhos.com/raty/ 
-	});
-</script>
 </head>
 <body>
 <div id='header'>
@@ -32,17 +27,18 @@
 	if (user != null) {
 		%>
 <div id='user_box'>Logged in as
-	<a href='UserPageServlet?username=<%= user.getLogin() %>'><%= user.getLogin() %></a><br />
+	<a href='userPage.jsp?user=<%= user.getLogin() %>'><%= user.getLogin() %></a><br />
 	<a href='LogoutServlet'>Log out</a> |
 	<a href='settings.jsp'>Settings</a>
 </div>
 <%=e%>
 <table id='wrapper'><tr><td id='user_menu'>
+
 	<ul id='user_menu_list'>
-		<li><a href='userPage.jsp'>Profile</a></li>
-		<li><a href='userAscents.jsp'>Ascents</a></li>
-		<li><a>Map</a></li>
-		<li><a>Statistics</a></li>
+		<li><a href='userPage.jsp'>View profile</a></li>
+		<li><a href='userAscents.jsp'>List ascents</a></li>
+		<li><a href='newAscent.jsp'>Register ascent</a></li>
+		<li><a href='userMap.jsp'>Map of mountains</a></li>
 	</ul>
 	<script>
 		$('#user_menu_list').scrollFollow();

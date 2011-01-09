@@ -1,12 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="inc/header.jsp"/>
-<%@ include file="inc/requireUser.jsp"%>
+<%@ include file="inc/header.jsp" %>
+<%@ include file="inc/requireUser.jsp" %>
 
 <h1>Register Ascent</h1>
 <form method='post' action='CreateAscentServlet'>
 
 <h2>Your experience</h2>
+<script>
+	$(function(){
+		$('.datepicker').datepicker({ defaultDate: 0, maxDate: 0 });
+		$('.starsrating').raty({path: 'lib/img/'}); //  http://www.wbotelhos.com/raty/ 
+	});
+</script>
 <label>Date*<br />
 <input type='text' name='date' class='datepicker' /></label><br />
 <br />
@@ -89,10 +93,10 @@ $(function(){
 <label>Sector*:<br/>
 <input type='text' name='secteur' id='sector-selector' /></label><br/><br/>
 
-<label>Approach*:<br/>
+<label>Crag*:<br/>
 <input type='text' name='voie' id='approach-selector' /></label><br/><br/>
 
-<h2>Difficulty</h2>
+<h2>Level</h2>
 <script>
 function setDifficulty() {
 	$( "#difficulty" ).html(

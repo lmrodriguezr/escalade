@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+  <tlib-version>1.0</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name></short-name>
+ <tag>
+    <name>ascents</name>
+    <tag-class>taglib.AscentsTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>userLogin</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>map</name>
+    <tag-class>taglib.MapTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>userLogin</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>country</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>city</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>user</name>
+    <!-- Same method of <peak:users /> -->
+    <tag-class>taglib.UsersTag</tag-class>
+    <body-content>empty</body-content>
+    <attribute>
+      <name>userLogin</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>asUserLogin</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  <tag>
+    <name>users</name>
+    <tag-class>taglib.UsersTag</tag-class>
+    <body-content>empty</body-content>
+  </tag>
+</taglib>

@@ -155,4 +155,14 @@
     <servlet-name>MapServlet</servlet-name>
     <url-pattern>/MapServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteAscentServlet</display-name>
+    <servlet-name>DeleteAscentServlet</servlet-name>
+    <servlet-class>sevlets.DeleteAscentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteAscentServlet</servlet-name>
+    <url-pattern>/DeleteAscentServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

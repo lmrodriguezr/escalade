@@ -58,13 +58,13 @@ public class CreateAscentServlet extends HttpServlet {
 		String err = "";
 		
 		if(commentaire==null) commentaire = "";
-		if(etoiles_str==null) err += "You must rank the ascent.<br/>";
-		if(date_str==null) err += "The date can not be empty.<br/>";
-		if(voie_str==null) err += "The approach can not be empty.<br/>";
-		if(secteur_str==null) err += "The sector can not be empty.<br/>";
-		if(falaise_str==null) err += "The mountain can not be empty.<br/>";
-		if(ville==null) err += "The city can not be empty.<br/>";
-		if(pays_str==null) err += "The country can not be empty.<br/>";
+		if(etoiles_str==null || etoiles_str.length()==0) err += "You must rank the ascent.<br/>";
+		if(date_str==null || date_str.length()==0) err += "The date can not be empty.<br/>";
+		if(voie_str==null || voie_str.length()==0) err += "The approach can not be empty.<br/>";
+		if(secteur_str==null || secteur_str.length()==0) err += "The sector can not be empty.<br/>";
+		if(falaise_str==null || falaise_str.length()==0) err += "The mountain can not be empty.<br/>";
+		if(ville==null || ville.length()==0) err += "The city can not be empty.<br/>";
+		if(pays_str==null || pays_str.length()==0) err += "The country can not be empty.<br/>";
 		if(grimpeur==null) err += "You must log in to access this page.<br/>";
 		
 		SessionFactory sessionFactory = new AnnotationConfiguration()
@@ -86,14 +86,22 @@ public class CreateAscentServlet extends HttpServlet {
 			Nuance cotation_nuance = Nuance.AUCUNE;
 			if(cotation_nuance_str.equals("+")) cotation_nuance = Nuance.PLUS;
 			if(cotation_nuance_str.equals("-")) cotation_nuance = Nuance.MOINS;
-			Cotation cotation = new Cotation(cotation_degre, cotation_lettre, cotation_nuance);
 			
 			List<Cotation> categories = sessionDB.createQuery(
-					"from Cotation as c where c.code = ?").
-					setString(0, cotation.getCode()).
+					"from Cotation as c where " +
+					"c.degre = ? and " +
+					"c.lettre = ? and " +
+					"c.nuance = ?").
+					setInteger(0, cotation_degre).
+					setInteger(1, cotation_lettre.ordinal()).
+					setInteger(2, cotation_nuance.ordinal()).
 					list();
+			Cotation cotation;
 			if(categories.size()==0){
+				cotation = new Cotation(cotation_degre, cotation_lettre, cotation_nuance);
 				sessionDB.save(cotation);
+			}else{
+				cotation = categories.get(0);
 			}
 			
 			// Pays
@@ -170,6 +178,8 @@ public class CreateAscentServlet extends HttpServlet {
 			ascension.setVoie(voie);
 			sessionDB.save(ascension);
 			
+			// Grimpeurs - Falaises
+			grimpeur.updateFalaises(sessionFactory);
 			
 			sessionDB.flush();
 			

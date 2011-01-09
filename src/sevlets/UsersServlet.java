@@ -47,19 +47,24 @@ import java.util.List;
 			if(format==null) format = "json";
 			String term = request.getParameter("term");
 			if(term==null) term = "";
+			String username = request.getParameter("user");
+			if(username==null) username = "%";
 			int limit;
 			if(request.getParameter("limit")==null) limit = 1000;
 			else limit = Integer.parseInt(request.getParameter("limit"));
 			
 			String json = "";
 			String html = "<ul>";
-			String table = "<table class='selection'><tr><th>Username</th>" +
+			String h_table = "<table class='selection'><tr><th>Username</th>" +
 					"<th>Name</th><th>Ascents</th></tr>\n";
+			String j_complete = "";
 			
 			List<Utilisateur> users = sessionDB.createQuery(
 					"from Utilisateur as u where u.nom like ? " +
+					"and u.login like ?" +
 					"order by u.id desc").
 						setString(0, "%"+term+"%").
+						setString(1, username).
 						setMaxResults(limit).list();
 			for(Iterator<Utilisateur> it = users.iterator(); it.hasNext(); ){
 				Utilisateur user = it.next();
@@ -67,22 +72,26 @@ import java.util.List;
 				json += "\"" + user.getLogin() + "\"" + (it.hasNext()?", ":"");
 				html += "<li><a href='UserPageServlet?username=" +
 					user.getLogin()+"'>" + user.getLogin() + "</a></li>";
-				table += "<tr><td><a href='UserPageServlet?username="+user.getLogin()+"'>" +
+				h_table += "<tr><td><a href='UserPageServlet?username="+user.getLogin()+"'>" +
 						user.getLogin() + "</a></td><td>" +
 						user.getNom() + " " + user.getPrenom() + "</td><td>" +
 						g.getAscensions().size() + "</td></tr>";
+				j_complete += g.toJson() + (it.hasNext()?", ":"");
 			}
 			sessionDB.flush();
 			
 			html += "</ul>";
 			json = "[" + json + "]";
-			table += "</table>";
+			h_table += "</table>";
+			j_complete = "{\"items\": ["+j_complete+"]}";
 			
 			PrintWriter out = response.getWriter();
 			if(format.equalsIgnoreCase("html")){
 				out.println(html);
 			}else if(format.equalsIgnoreCase("html-table")){
-				out.println(table);
+				out.println(h_table);
+			}else if(format.equalsIgnoreCase("json-complete")){
+				out.println(j_complete);
 			}else{
 				out.println(json);
 			}

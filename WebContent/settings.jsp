@@ -1,7 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<jsp:include page="inc/header.jsp"/>
-<%@ include file="inc/requireUser.jsp"%>
+<%@ include file="inc/header.jsp" %>
+<%@ include file="inc/requireUser.jsp" %>
 <%
 		Grimpeur g = (Grimpeur) userR;
 		String login = g.getLogin()==null ? "" : g.getLogin();

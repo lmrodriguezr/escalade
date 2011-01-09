@@ -1,15 +1,18 @@
 package me.thebio.escalade;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-//import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.SessionFactory;
+import org.hibernate.classic.Session;
 
 
 /**
@@ -29,8 +32,8 @@ public class Grimpeur extends Utilisateur {
 	@OneToMany(mappedBy = "grimpeur")
 	private Set<Ascension> ascensions = new HashSet<Ascension>();
 
-	@ManyToMany(mappedBy = "grimpeurs")
-	@JoinTable(name = "h_grimpeur_falaise", joinColumns = @JoinColumn(name = "grimpeur_id"), inverseJoinColumns = @JoinColumn(name = "falaise_id"))
+	@ManyToMany(targetEntity=Falaise.class)
+	@JoinTable(name = "h_falaise_h2_grimpeur", joinColumns = @JoinColumn(name = "grimpeurs_id"), inverseJoinColumns = @JoinColumn(name = "falaises_id"))
 	private Set<Falaise> falaises = new HashSet<Falaise>();
 	
 	public Grimpeur() {
@@ -73,8 +76,28 @@ public class Grimpeur extends Utilisateur {
 		return ascensions;
 	}
 
-	public void setAscensions(Set<Ascension> ascencions) {
-		this.ascensions = ascencions;
+	public void setAscensions(Set<Ascension> ascensions) {
+		this.ascensions = ascensions;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void updateFalaises(SessionFactory sessionFactory){
+		Session session=null;
+		try{
+			session = sessionFactory.openSession();
+			List<Falaise> falaises = session.createQuery(
+				"select distinct f from Falaise f, Ascension a where " +
+				"a.grimpeur = ? and " +
+				"a.voie.secteur.falaise = f").
+				setEntity(0, this).list();
+			Set<Falaise> fSet = new HashSet(falaises);
+			this.setFalaises(fSet);
+			session.update(this);
+			session.flush();
+		}finally{
+			if(session!=null)
+				session.close();
+		}
 	}
 	
 	@Override
@@ -83,6 +106,13 @@ public class Grimpeur extends Utilisateur {
 		sb.append("grimpeur(id=" + getId() + ",login=" + getLogin()
 				+ ",nom=" + getNom() + ",prenom=" + getPrenom() + ")");
 		return sb.toString();
+	}
+	public String toJson() {
+		return "{\"id\": "+getId()+", \"login\": \""+getLogin()+
+				"\", \"nom\": \""+getNom()+"\", \"prenom\": \"" + getPrenom() +
+				"\", \"age\": "+ getAge() + ", \"poids\": "+getPoids() +
+				", \"taille\": "+getTaille()+", \"ascensions\": "+getAscensions().size() +
+				", \"falaises\": "+getFalaises().size()+"}";
 	}
 
 }

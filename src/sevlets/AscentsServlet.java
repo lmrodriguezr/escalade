@@ -53,9 +53,12 @@ import java.util.List;
 			
 			String json = "";
 			String html = "<ul>";
-			String table = "<table class='selection'><tr><th>Date</th><th>Country</th>" +
-					"<th>Mountain</th><th>Sector</th><th>Path</th><th>User</th>" +
-					"<th>Comments</th></tr>";
+			String h_table = "<table class='selection'><tr><th>Date</th><th>Country</th>" +
+					"<th>City</th><th>Mountain</th><th>Sector</th><th>Path</th><th>User</th>" +
+					"<th>Comments</th><th>&nbsp;</th></tr>";
+			String complete = "";
+			String j_table = "";
+			Utilisateur loggedUser = ((Utilisateur)request.getSession().getAttribute("loggedUser"));
 			
 			List<Ascension> ascs = sessionDB.createQuery(
 					"from Ascension as a where a.grimpeur.login like ? " +
@@ -68,29 +71,58 @@ import java.util.List;
 				Voie v = asc.getVoie();
 				Secteur s = v.getSecteur();
 				Falaise f = s.getFalaise();
+				String actions = "";
+				if(loggedUser!=null && asc.getGrimpeur().getLogin().equals(loggedUser.getLogin())){
+					actions += "<img onclick='deleteAscent(" + asc.getId() + ");' " +
+								"style='cursor:pointer' title='delete ascent' " +
+								"src='lib/img/cancel-on.png' alt='delete' />";
+				}
 				json += "" + asc.getId() + (it.hasNext()?", ":"");
 				html += "<li>" + asc.getId() + ". At " + asc.getVoie().getNom() + " by " +
-						"<a href='UserPageServlet?username=" + g.getLogin() + "'>" +
+						"<a href='userPage.jsp?user=" + g.getLogin() + "'>" +
 						g.getLogin() + "</a></li>";
-				table += "<tr><td>"+asc.getDate().toString().substring(0, 11).replaceAll("-", "/") + "</td><td>" +
+				h_table += "<tr><td>"+asc.getDate().toString().substring(0, 11).replaceAll("-", "/") + "</td><td>" +
+						asc.getCotation().getCode() + "</td><td>" +
 						f.getPays().getNom() + "</td><td>" +
+						f.getVille() + "</td><td>" +
 						f.getNom() + "</td><td>" +
 						s.getNom() + "</td><td>" +
 						v.getNom() + "</td><td>" +
-						"<a href='UserPageServlet?username="+g.getLogin()+"'>" +
+						"<a href='userPage.jsp?user="+g.getLogin()+"'>" +
 						g.getLogin() + "</td><td>" +
-						asc.getCommentaire() + "</td></tr>";
+						asc.getCommentaire() + "</td><td>" +
+						actions + "</td></tr>";
+				complete += asc.toJson() + (it.hasNext()?", ":"");
+				j_table += "{\"id\": "+asc.getId()+", \"cell\": [" +
+						"\""+asc.getDate().toString().substring(0,11).replaceAll("-","/")+"\", \"" +
+						asc.getCotation().getCode()+"\", \"" +
+						f.getPays().getNom()+"\", \"" +
+						f.getVille() + "\", \"" +
+						f.getNom() + "\", \"" +
+						s.getNom() + "\", \"" +
+						v.getNom() + "\", \"" +
+						"<a href='userPage.jsp?user="+g.getLogin()+"'>" +
+						g.getLogin() + "</a>\", \"" +
+						asc.getCommentaire() + "\", \"" +
+						actions.replaceAll("\"", "&quot;") + "\"]}" +
+						(it.hasNext()?", ":"");
 			}
 			sessionDB.flush();
 			
 			html += "</ul>";
 			json = "[" + json + "]";
+			complete = "{ \"items\": [" + complete + "]}";
+			j_table = "{ \"rows\": ["+j_table+"]}";
 			
 			PrintWriter out = response.getWriter();
 			if(format.equalsIgnoreCase("html")){
 				out.println(html);
 			}else if(format.equalsIgnoreCase("html-table")){
-				out.println(table);
+				out.println(h_table);
+			}else if(format.equalsIgnoreCase("json-complete")){
+				out.println(complete);
+			}else if(format.equalsIgnoreCase("json-table")){
+				out.println(j_table);
 			}else{
 				out.println(json);
 			}
