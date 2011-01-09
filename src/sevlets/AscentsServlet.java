@@ -71,11 +71,13 @@ import java.util.List;
 				Voie v = asc.getVoie();
 				Secteur s = v.getSecteur();
 				Falaise f = s.getFalaise();
-				String actions = "";
+				String actions = "<img onclick='location.href=\"map.jsp?ascent="+asc.getId()+"\"' " +
+						"style='cursor:pointer' " +
+						"src='lib/img/world.png' alt='map' /> ";
 				if(loggedUser!=null && asc.getGrimpeur().getLogin().equals(loggedUser.getLogin())){
 					actions += "<img onclick='deleteAscent(" + asc.getId() + ");' " +
 								"style='cursor:pointer' title='delete ascent' " +
-								"src='lib/img/cancel-on.png' alt='delete' />";
+								"src='lib/img/cancel-on.png' alt='delete' /> ";
 				}
 				json += "" + asc.getId() + (it.hasNext()?", ":"");
 				html += "<li>" + asc.getId() + ". At " + asc.getVoie().getNom() + " by " +

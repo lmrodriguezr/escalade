@@ -20,32 +20,32 @@ public class AscentsTag extends TagSupport {
 			
 			pageContext.getOut().print(
 				"<script>\n"+
-				"	$(function(){\n"+
-				"		$('#ascents-"+tabId+"').flexigrid({\n"+
-				"			url: 'AscentsServlet?"+req+"',\n"+
-				"			dataType: 'json',\n"+
-				"			method:'get',\n"+
-				"			colModel: [\n"+
-				"				{display: 'Date', name: 'date', width: '55', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Level', name: 'level', width: '30', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Country', name: 'country', width: '70', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'City', name: 'city', width: '70', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Mountain', name: 'mountain', width: '70', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Sector', name: 'sector', width: '90', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Approach', name: 'approach', width: '90', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'User', name: 'user', width: '60', sortable: 'false', align: 'center'},\n"+
-				"				{display: 'Comments', name: 'comments', width: '110', sortable: 'false', align: 'left'},\n"+
-				"				{display: '&nbsp;', name: 'actions', width: '20', sortable: 'false', align:'left'}\n"+
-				"			],\n"+
-				"			title: 'Recent ascents',\n"+
-				"			height:'auto',\n"+
-				"			weight: 'auto',\n"+
-				"			showTableToggleBtn: true,\n"+
-				"		});\n"+
-				"	});\n"+
+					"$(function(){\n"+
+						"$('#ascents-"+tabId+"').flexigrid({\n"+
+							"url: 'AscentsServlet?"+req+"',\n"+
+							"dataType: 'json',\n"+
+							"method:'get',\n"+
+							"colModel: [\n"+
+								"{display: 'Date', name: 'date', width: '55', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Level', name: 'level', width: '30', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Country', name: 'country', width: '70', sortable: 'false', align: 'center'},\n"+
+								"{display: 'City', name: 'city', width: '70', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Mountain', name: 'mountain', width: '70', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Sector', name: 'sector', width: '80', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Approach', name: 'approach', width: '80', sortable: 'false', align: 'center'},\n"+
+								"{display: 'User', name: 'user', width: '60', sortable: 'false', align: 'center'},\n"+
+								"{display: 'Comments', name: 'comments', width: '110', sortable: 'false', align: 'left'},\n"+
+								"{display: '&nbsp;', name: 'actions', width: '40', sortable: 'false', align:'left'}\n"+
+							"],\n"+
+							"title: 'Recent ascents',\n"+
+							"height:'auto',\n"+
+							"weight: 'auto',\n"+
+							"showTableToggleBtn: true,\n"+
+						"});\n"+
+					"});\n"+
 				"</script>\n"+
 				"<div style='width:94%; margin: 0 3%'>\n"+
-				"	<table id=\"ascents-"+tabId+"\" style=\"display:none\"></table>\n"+
+					"<table id=\"ascents-"+tabId+"\" style=\"display:none\"></table>\n"+
 				"</div>\n"
 			);
 			

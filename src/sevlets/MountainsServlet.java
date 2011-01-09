@@ -55,6 +55,8 @@ import java.util.List;
 			if(city==null) city = "%";
 			String username = request.getParameter("user");
 			if(username==null) username = "%";
+			String ascent = request.getParameter("ascent");
+			if(ascent==null) ascent = "%";
 			
 			String json = "";
 			String complete = "";
@@ -62,19 +64,19 @@ import java.util.List;
 			
 			List<Falaise> mountains = sessionDB.createQuery(
 					"select distinct f " +
-					"from Falaise f, Secteur s, Voie v, Ascension a, Grimpeur g " +
+					"from Falaise f, Ascension a, Grimpeur g " +
 					"where f.nom like ? and " +
 					"f.ville like ? and " +
 					"f.pays.nom like ? and " +
-					"f = s.falaise and " +
-					"s = v.secteur and " +
-					"v = a.voie and " +
+					"f = a.voie.secteur.falaise and " +
 					"a in elements(g.ascensions) and " +
-					"g.login like ?").
+					"g.login like ? and " +
+					"a.id like ?").
 						setString(0, "%" + term + "%").
 						setString(1, city).
 						setString(2, country).
 						setString(3, username).
+						setString(4, ascent).
 						setMaxResults(limit).list();
 			for(Iterator<Falaise> it = mountains.iterator(); it.hasNext(); ){
 				

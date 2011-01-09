@@ -26,6 +26,11 @@
       <rtexprvalue>true</rtexprvalue>
     </attribute>
     <attribute>
+      <name>ascent</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
       <name>country</name>
       <required>false</required>
       <rtexprvalue>true</rtexprvalue>
