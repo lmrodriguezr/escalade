@@ -6,12 +6,56 @@
 <head>
 <%@ include file="libs.jsp"%>
 <title>Peak</title>
+
+<link href="jimgMenu.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+$(document).ready(function () {
+
+  // Chercher les elements a etirer
+  $('div.jimgMenu ul li a').hover(function() {
+    
+    // Si l'element est anime
+    if ($(this).is(':animated')) {
+      $(this).stop().animate({width: "310px"}, {duration: 450, easing:"easeOutQuad"});
+    } else {
+      // l'etirer vite
+      $(this).stop().animate({width: "310px"}, {duration: 400, easing:"easeOutQuad"});
+    }
+  }, function () {
+    // le ramener
+    if ($(this).is(':animated')) {
+      $(this).stop().animate({width: "78px"}, {duration: 400, easing:"easeInOutQuad"})
+    } else {
+      // le ramener doucement
+      $(this).stop('animated:').animate({width: "78px"}, {duration: 450, easing:"easeInOutQuad"});
+    }
+  });
+});
+</script>
+
 </head>
 <body>
 <div id='header'>
 	<h1><a href='peaks.jsp'>Peak</a></h1>
 	<h2>The climbers web site</h2>
 </div>
+
+<div class="jimgMenu">
+  <ul>
+    <li class="home"><a href="#nogo">Home</a></li>
+    <li class="news"><a href="#nogo">News</a></li>
+    <li class="events"><a href="#nogo">Events Calendar</a></li>
+    <li class="members"><a href="#nogo">Members</a></li>
+    <li class="photo"><a href="#nogo">Photo Gallery</a></li>
+    <li class="video"><a href="#nogo">Video Gallery</a></li>
+    <li class="weather"><a href="#nogo">Weather</a></li>
+    <li class="forum"><a href="#nogo">Forum</a></li>
+    <li class="guestbook"><a href="#nogo">Guestbook</a></li>
+    <li class="contact"><a href="#nogo">Contact us</a></li>
+  </ul>
+</div>
+
 <div id='climber-top'>&nbsp;</div>
 <%
 	String e = "";
