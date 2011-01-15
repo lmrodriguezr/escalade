@@ -8,6 +8,8 @@
 		if(prenom==null) prenom = "";
 		String nom = (String) request.getSession().getAttribute("nom");
 		if(nom==null) nom = "";
+		String gender = (String) request.getSession().getAttribute("gender");
+		if(gender==null) gender = "";
 		Integer age = (Integer) request.getSession().getAttribute("age");
 		if(age==null) age = 0;
 		Integer poids = (Integer) request.getSession().getAttribute("poids");
@@ -36,6 +38,14 @@
 <input type='text' name='nom' value='<%= nom %>' /></label><br />
 <br />
 <h2>Climber data</h2>
+<label>Gender<br />
+   <select name="gender">
+   <option value=" ">  </option>
+   <option value="Male">Male</option>
+   <option value="Female">Female</option>
+   </select></label><br />
+ <br /> 
+
 <label>Age<br />
 <input type='text' name='age'
 	value='<%= age %>' /></label><br />

@@ -40,6 +40,7 @@ public class CreateUserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
+		String gender = request.getParameter("gender");
 		Integer age = Integer.parseInt("0"+request.getParameter("age"));
 		Integer poids = Integer.parseInt("0"+request.getParameter("poids"));
 		Integer taille = Integer.parseInt("0"+request.getParameter("taille"));
@@ -64,6 +65,7 @@ public class CreateUserServlet extends HttpServlet {
 			request.getSession().setAttribute("email", email);
 			request.getSession().setAttribute("nom", nom);
 			request.getSession().setAttribute("prenom", prenom);
+			request.getSession().setAttribute("gender", gender);
 			request.getSession().setAttribute("age", age);
 			request.getSession().setAttribute("poids", poids);
 			request.getSession().setAttribute("taille", taille);
@@ -78,6 +80,7 @@ public class CreateUserServlet extends HttpServlet {
 			gp.setLogin(login);
 			gp.setPassword(password);
 			if(email.length()>0) gp.setEmail(email);
+			if(gender.length()>0) gp.setGender(gender);
 			if(taille>0) gp.setTaille(taille);
 			sessionDB.save(gp);
 			

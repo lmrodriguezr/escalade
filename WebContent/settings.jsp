@@ -6,6 +6,7 @@
 		String email = g.getEmail()==null ? "" : g.getEmail();
 		String prenom = g.getPrenom()==null ? "" : g.getPrenom();
 		String nom = g.getNom()==null ? "" : g.getNom();
+		String gender = g.getGender()==null ? "" : g.getGender();
 		int age = g.getAge();
 		int poids = g.getPoids();
 		int taille = g.getTaille();
@@ -33,6 +34,12 @@
 <input type='text' name='nom' value='<%=nom%>' /></label><br />
 <br />
 <h2>Climber data</h2>
+<label>Gender<br />
+   <select name="gender">
+   <option value=" ">  </option>
+   <option value='<%=gender%>'>Male</option>
+   </select></label><br />
+ <br /> 
 <label>Age<br />
 <input type='text' name='age' value='<%=age%>' /></label><br />
 <br />

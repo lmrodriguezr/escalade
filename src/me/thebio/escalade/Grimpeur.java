@@ -28,6 +28,7 @@ public class Grimpeur extends Utilisateur {
 	private int age;
 	private int poids;
 	private int taille;
+	private String gender;
 	
 	@OneToMany(mappedBy = "grimpeur")
 	private Set<Ascension> ascensions = new HashSet<Ascension>();
@@ -71,6 +72,14 @@ public class Grimpeur extends Utilisateur {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
+	
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender ;
+	}
 
 	public Set<Ascension> getAscensions() {
 		return ascensions;
@@ -109,8 +118,8 @@ public class Grimpeur extends Utilisateur {
 	}
 	public String toJson() {
 		return "{\"id\": "+getId()+", \"login\": \""+getLogin()+
-				"\", \"nom\": \""+getNom()+"\", \"prenom\": \"" + getPrenom() +
-				"\", \"age\": "+ getAge() + ", \"poids\": "+getPoids() +
+				"\", \"nom\": \""+getNom()+"\", \"prenom\": \"" + getPrenom() + ", \"gender\": "+getGender()+
+				"\", \"age\": "+ getAge() + ", \"poids\": "+getPoids() + 
 				", \"taille\": "+getTaille()+", \"ascensions\": "+getAscensions().size() +
 				", \"falaises\": "+getFalaises().size()+"}";
 	}

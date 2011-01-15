@@ -41,6 +41,7 @@ public class AlterUserServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
+		String gender = request.getParameter("gender");
 		Integer age = Integer.parseInt("0"+request.getParameter("age"));
 		Integer poids = Integer.parseInt("0"+request.getParameter("poids"));
 		Integer taille = Integer.parseInt("0"+request.getParameter("taille"));
@@ -69,6 +70,7 @@ public class AlterUserServlet extends HttpServlet {
 			if(password.length()>0) gp.setPassword(password);
 			if(email.length()>0) gp.setEmail(email);
 			if(taille>0) gp.setTaille(taille);
+			if(gender.length()>0) gp.setGender(gender);
 			sessionDB.update(gp);
 			
 			request.getSession().setAttribute("password", gp.getPassword());
