@@ -18,14 +18,14 @@
 	Object err = request.getSession().getAttribute("error");
 	if (err != null) {
 		e = "<script>\n"
-				+ "setTimeout(function () { $('#ErrId').fadeOut('slow'); }, 1000*12);\n"
-				+ "</script><div class='error' id='ErrId'><h1>Error</h1>"
-				+ err + "</div>";
+		+ "setTimeout(function () { $('#ErrId').fadeOut('slow'); }, 1000*12);\n"
+		+ "</script><div class='error' id='ErrId'><h1>Error</h1>"
+		+ err + "</div>";
 		request.getSession().removeAttribute("error");
 	}
 	Grimpeur user = (Grimpeur) request.getSession().getAttribute("loggedUser");
 	if (user != null) {
-		%>
+%>
 <div id='user_box'>Logged in as
 	<a href='userPage.jsp?user=<%= user.getLogin() %>'><%= user.getLogin() %></a><br />
 	<a href='LogoutServlet'>Log out</a> |

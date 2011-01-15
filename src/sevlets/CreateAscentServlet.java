@@ -39,6 +39,7 @@ public class CreateAscentServlet extends HttpServlet {
 	 * @throws ParseException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -166,7 +167,7 @@ public class CreateAscentServlet extends HttpServlet {
 			
 			// Ascension
 			DateFormat formatter = new SimpleDateFormat("MM/dd/yy");
-		    Date date = (Date)formatter.parse(date_str);
+		    Date date = formatter.parse(date_str);
 		    int etoiles = Integer.parseInt(etoiles_str);
 			Ascension ascension = new Ascension();
 			ascension.setCommentaire(commentaire);

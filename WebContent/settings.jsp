@@ -1,7 +1,7 @@
 <%@ include file="inc/header.jsp" %>
 <%@ include file="inc/requireUser.jsp" %>
 <%
-		Grimpeur g = (Grimpeur) userR;
+	Grimpeur g = (Grimpeur) userR;
 		String login = g.getLogin()==null ? "" : g.getLogin();
 		String email = g.getEmail()==null ? "" : g.getEmail();
 		String prenom = g.getPrenom()==null ? "" : g.getPrenom();

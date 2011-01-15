@@ -10,6 +10,7 @@ public class AscentsTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
 	protected String userLogin;
 
+	@Override
 	@SuppressWarnings("unchecked")
 	public int doStartTag() throws JspException {
 		String actions = "";

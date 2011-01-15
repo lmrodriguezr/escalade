@@ -118,10 +118,9 @@ public class Grimpeur extends Utilisateur {
 	}
 	public String toJson() {
 		return "{\"id\": "+getId()+", \"login\": \""+getLogin()+
-				"\", \"nom\": \""+getNom()+"\", \"prenom\": \"" + getPrenom() + ", \"gender\": "+getGender()+
+				"\", \"nom\": \""+getNom()+"\", \"prenom\": \"" + getPrenom() + "\", \"gender\": \""+getGender()+
 				"\", \"age\": "+ getAge() + ", \"poids\": "+getPoids() + 
 				", \"taille\": "+getTaille()+", \"ascensions\": "+getAscensions().size() +
 				", \"falaises\": "+getFalaises().size()+"}";
 	}
-
 }
