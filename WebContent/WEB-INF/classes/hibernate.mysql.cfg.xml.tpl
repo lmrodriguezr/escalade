@@ -5,11 +5,11 @@
 <hibernate-configuration>
 	<session-factory>
 
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/peaks</property>
+		<property name="hibernate.connection.url">jdbc:mysql://__mysql_server:3306/__mysql_database</property>
 
 		<!-- renseigner l'utilisateur et son mot de passe -->
-		<property name="hibernate.connection.username"></property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.username">__mysql_user</property>
+		<property name="hibernate.connection.password">__mysql_passwd</property>
 
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>

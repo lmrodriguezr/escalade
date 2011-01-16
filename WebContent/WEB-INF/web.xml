@@ -165,4 +165,14 @@
     <servlet-name>DeleteAscentServlet</servlet-name>
     <url-pattern>/DeleteAscentServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InstallServlet</display-name>
+    <servlet-name>InstallServlet</servlet-name>
+    <servlet-class>sevlets.InstallServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InstallServlet</servlet-name>
+    <url-pattern>/InstallServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -76,7 +76,7 @@ $(document).ready(function () {
 	<a href='settings.jsp'>Settings</a>
 </div>
 <%=e%>
-<table id='wrapper'><tr><td id='user_menu'>
+<%= "<table id='wrapper'><tr><td id='user_menu'>" %>
 
 	<ul id='user_menu_list'>
 		<li><a href='userPage.jsp'>View profile</a></li>
@@ -87,7 +87,7 @@ $(document).ready(function () {
 	<script>
 		$('#user_menu_list').scrollFollow();
 	</script>
-</td><td id='content'>
+<%= "</td><td id='content'>" %>
 <%
 	}else{
 %>
@@ -95,7 +95,7 @@ $(document).ready(function () {
 	<a href='newUser.jsp'>Create user</a> ]
 </div>
 <%=e%>
-<table id='wrapper'><tr><td id='content'>
+<%= "<table id='wrapper'><tr><td id='content'>" %>
 <%
 	}
 %>
