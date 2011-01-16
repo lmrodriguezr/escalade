@@ -1,5 +1,8 @@
 <%@ include file="inc/header.jsp" %>
 
+
+
+
 <h2>Registered mountains</h2>
 <peak:map/>
 
@@ -10,3 +13,6 @@
 <peak:ascents/>
 
 <jsp:include page="inc/footer.jsp" />
+
+</body>
+</html>
