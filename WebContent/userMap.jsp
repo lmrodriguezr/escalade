@@ -10,5 +10,3 @@ if(u!=null && u.equals(userR.getLogin())){
 }
 %>
 <peak:map userLogin="<%= u %>"/>
-
-<jsp:include page="inc/footer.jsp"></jsp:include>
