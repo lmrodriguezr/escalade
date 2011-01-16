@@ -178,6 +178,9 @@ pre {
 	border: 1px solid #333;
 	overflow: auto;
 }
+a {
+	color: #1d4381;
+}
 
 /* By class */
 div.error {
@@ -240,4 +243,14 @@ div.post {
 }
 .uBox div span {
 	color: #777;
+}
+.anchor_button {
+	padding: 0.1em 0.3em;
+	border: 1px solid #3b4a63;
+	background: #ccd4e0; 
+	color: #1d4381;
+	text-decoration: none;
+}
+.anchor_button:hover {
+	background: #c3c6ea;
 }

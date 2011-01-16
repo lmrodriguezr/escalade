@@ -20,5 +20,4 @@ function deleteAscent(idAscent){
 				}
 			}
 	});
-	//$("body").append(cf);
 }
