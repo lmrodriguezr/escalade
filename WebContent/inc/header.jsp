@@ -47,8 +47,8 @@ $(document).ready(function () {
     <li class="news"><a href="#nogo">News</a></li>
     <li class="events"><a href="#nogo">Events Calendar</a></li>
     <li class="members"><a href="#nogo">Members</a></li>
-    <li class="photo"><a href="#nogo">Photo Gallery</a></li>
-    <li class="video"><a href="#nogo">Video Gallery</a></li>
+    <li class="photo"><a href="Photo.html">Photo Gallery</a></li>
+    <li class="video"><a href="Videos.html">Video Gallery</a></li>
     <li class="weather"><a href="#nogo">Weather</a></li>
     <li class="forum"><a href="#nogo">Forum</a></li>
     <li class="guestbook"><a href="#nogo">Guestbook</a></li>
