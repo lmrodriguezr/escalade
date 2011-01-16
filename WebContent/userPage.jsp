@@ -5,3 +5,4 @@
 	if(u==null) u = userR.getLogin();
 %>
 <peak:user asUserLogin="<%= userR.getLogin() %>" userLogin="<%= u %>"/>
+<jsp:include page="inc/footer.jsp"></jsp:include>

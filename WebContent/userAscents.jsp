@@ -10,3 +10,4 @@ if(u!=null && u.equals(userR.getLogin())){
 }
 %>
 <peak:ascents userLogin="<%= u %>"/>
+<jsp:include page="inc/footer.jsp"></jsp:include>
