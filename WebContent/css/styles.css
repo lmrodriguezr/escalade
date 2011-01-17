@@ -1,0 +1,98 @@
+body {background:#fff; font-family:Verdana, Geneva, sans-serif; font-size:12px; line-height:20px; color:#545353;}
+
+.container {
+	width:960px; 
+	margin:0px auto; 
+	position:relative;
+	z-index:12;
+	}
+	
+/* Positions the contact form so it doesn't interfere with any other content, as well as a z-index above any other elements on the page */	
+#contactFormContainer {
+	position:absolute;
+	left:368px;
+	z-index:1;
+	}
+	
+/* Hides the whole contact form until needed */	
+#contactForm {
+	height:289px;width:558px;
+	background:#515151 url(../images/birdy.jpg) no-repeat 241px 11px; 
+	border:1px solid #929191;
+	padding:7px 12px; 
+	color:#fff;
+	display:none;
+	}   
+
+/* Loading bar that will appear while the ajax magic is happening */
+.bar{
+	display:none; 
+	background:url(../images/ajax-loader.gif) no-repeat center; 
+	margin-top:100px; 
+	height:40px; width:230px;
+	}
+	
+/* Hides the confirmation message until needed */	
+#messageSent {display:none;}
+
+/* This hides the form validation alert messages until needed */
+#contactForm span { 
+	display:none; 
+	font-size:9px; 
+	line-height:10px; 
+	padding-left:6px; 
+	color:#f5c478;
+	}
+	
+/* Some styling for the contact button */
+#contactFormContainer .contact {
+	height:47px; width:211px;
+	background:url(../images/contact_me.png); 
+	position:absolute; 
+	left:368px; bottom:-44px; 
+	cursor:pointer;
+	}
+			
+/* Hides the darkening layer for the Modal effect. The z-index is necessary for layering purposes, and be sure to keep the positioning/height/width the same */	
+#backgroundPopup{
+	display:none; 
+	position:fixed; 
+	_position:absolute; 
+	height:100%; width:100%; 
+	top:0; left:0;
+	background:#000; 
+	z-index:11;
+	}  
+	
+/* Form styling from here on out. There is nothing in here that you HAVE to use to get this to work */	
+#contactForm textarea, #contactForm input {
+	width:180px; 
+	background:#6d6d6d url(../images/contact_input.png) repeat-x top; 
+	color:#fff; 
+	border:1px solid #8a8a8a; 
+	height:15px; 
+	line-height:14px; 
+	font-size:11px; 
+	padding:2px 2px 0px;
+	}
+#contactForm input {background-position:0px -20px;}
+#contactForm textarea {height:114px; font-family:Verdana, Geneva, sans-serif;}
+#contactForm .submit {
+	border:1px solid #aba8a8; 
+	background:#e5e5e5; 
+	text-transform:uppercase; 
+	color:#4d4d4d; 
+	font-weight:bold; 
+	padding:7px 16px 7px 14px; 
+	height:37px; width:124px; 
+	cursor:pointer; 
+	float:left; 
+	margin-top:196px;
+	}
+#contactForm .submit:active {background:#cacaca; }
+#contactForm label {padding-left:4px; font-weight:bold;}
+#contactForm p {padding-bottom:8px;}
+#contactForm .input_boxes {float:left; width:204px;}
+
+#dummycontent {padding-top:100px; height:600px; position:relative;}
+.bottomlink {position:absolute; bottom:0;}

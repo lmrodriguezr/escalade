@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
+<link rel="stylesheet" type="text/css" href="css/frontierCalendar/jquery-frontier-cal-1.3.2.css" />
+
 <title>Weather Information</title>
 
 
@@ -85,11 +87,44 @@ function file(fichier)
 
 </script>
 
+<style type="">
+body { font-size: 62.5%; }
+.shadow {
+	-moz-box-shadow: 3px 3px 4px #aaaaaa;
+	-webkit-box-shadow: 3px 3px 4px #aaaaaa;
+	box-shadow: 3px 3px 4px #aaaaaa;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa');
+}
+</style>
 
 </head>
 
 		
-<body>
+<body style="background-color: #aaaaaa;">
+
+<h1 style="font-size: 30px; font-weight: bold;">Weather Information</h1>
+
+<div id="tabs">
+
+<div id="tabs-2">
+
+<div id="example" style="margin: auto; width:80%;">
+
+		<div class="shadow" style="border: 1px solid #aaaaaa; padding: 3px;">
+			<b>
+			This Weather report gives the temperature and the wind speed in different areas in the world.
+			<br><br>
+            Select your country and your city to check the weather in your location.
+            
+            <br><br>
+            <a href="peaks.jsp">Back Home</a>
+			</b>
+		</div>
+		
+<div class="shadow" style="border: 1px solid #aaaaaa; padding: 3px;">
+
+<b>
 
 				    <table width="100%" border="0" cellspacing="2" cellpadding="2">
 
@@ -97,7 +132,7 @@ function file(fichier)
                         <td>&nbsp;</td>
                       </tr>
                       <tr>
-                        <td><span style="font-weight: bold">METEO SPOTS BEACH</span></td>
+                        <td><span style="font-weight: bold">SPOTS MAP</span></td>
 
                       </tr>
                       
@@ -109,7 +144,7 @@ function file(fichier)
                         <tr>
                         
                           <td><select name="spotbeach1" id="spotbeach1"   class="deroulDivers"  onchange="paysspotajax(this.form, document.getElementById('spotbeach1'), document.getElementById('spotbeach2'), 'typespot12externe');">
-                              <option value="0">Choisir un pays :</option>
+                              <option value="0">Select a country :</option>
 
                               <option selected="selected" value="1">France</option>
 	
@@ -254,7 +289,7 @@ function file(fichier)
                         <tr> 
                          
                           <td><select name="spotbeach2" id="spotbeach2"   class="deroulDivers" onchange="document.getElementById('mb1').src='http://www.allosurf.net/extern/mb1.php?qui=&id='+this.value+'&ventunite='+ventunite;  spotid=this.value;  document.getElementById('textacoller1').value=coller1+this.value+'&ventunite='+ventunite+coller2;  ; document.getElementById('addtogoogle').href='http://www.google.fr/ig/adde?moduleurl=http://www.allosurf.net/extern/gadget.php?id='+this.value; ">
-                                                            <option value="">Sélectionner parmis 456  spots</option>
+                                                            <option value="">Sélect among the 456 spots</option>
 
                                                             <option  value="723">05 - Lac de Serre-Ponçon</option>
                                                             <option  value="373">05 - Plan d'eau du Riou</option>
@@ -793,6 +828,11 @@ function file(fichier)
 
                             </select>
                             
+                            </div>
+                            
+                            </b>
+                            
+                            
  <select name="select" class="deroulDivers" onchange="document.getElementById('mb1').src='http://www.allosurf.net/extern/mb1.php?qui=&id='+spotid+'&ventunite='+this.value; ventunite=this.value;  document.getElementById('textacoller1').value=coller1+spotid+'&ventunite='+this.value+coller2;  ; ">
  <option value="nd">vent en noeuds</option>
  <option value="bft">vent en beauforts</option>
@@ -820,7 +860,7 @@ function file(fichier)
                         <td align="left">&nbsp;</td>
                       </tr>
                       <tr>
-                        <td align="left"><span style="font-weight: bold">METEO CARTES HOULE &amp; VENT</span></td>
+                        <td align="left"><span style="font-weight: bold">WIND MAP</span></td>
                       </tr>
                       <tr>
 
@@ -868,13 +908,25 @@ function file(fichier)
                     </table>
                 
                 
+                <div position="center" padding: -20px;>
+<p><b>Share this weather report on social networks.</p></b>
+<div>
+<script type="text/javascript">
+  addthis_url    = location.href;   
+  addthis_title  = document.title;  
+  addthis_pub    = 'digitalalchemy';     
+</script><script type="text/javascript" src="http://s7.addthis.com/js/addthis_widget.php?v=12" ></script>
+</div>
+</div>
                 
 			</div>
 		</div>
 		<div class="blockbas block644bas"></div>
 	</div>
+	
+	
 
-
+</div>
 
 
 

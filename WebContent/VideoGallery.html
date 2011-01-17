@@ -7,6 +7,25 @@
 body {
 	background: #0F0D0D;
 	padding: 30px 0 0 50px;
+	
+	div.sc_menu_wrapper {
+	position: relative; 	
+	height: 500px;
+	width: 100%;
+	
+	margin-top: 30px;
+	overflow: auto;
+	
+	#back {
+	margin-left: 8px;
+	color: gray;
+	font-size: 18px;
+	text-decoration: none;
+}
+#back:hover {
+	text-decoration: underline;
+}
+}
 }
     </style>
     <script type="text/javascript" src="jquery-ui/js/jquery.js"></script>
@@ -58,7 +77,8 @@ body {
     <!--[if IE]><link rel="stylesheet" type="text/css" href="css/ie.css" /><![endif]-->
   </head>
   <body>
-    <h2>Video Gallery</h2><br/>
+    <h1 id="back">Videos Gallery</h1>
+    <div class="sc_menu_wrapper">
     <div id="mediaplayerloading" style="width:550px;height:400px;">
       <img src="templates/default/images/busy.gif" />
     </div>
@@ -186,6 +206,7 @@ body {
             <div id="medianextpage" class="mediapagerlink ui-state-default ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></div>
           </div>
         </div></div>
+    </div>
     </div>
   </body>
 </html>
