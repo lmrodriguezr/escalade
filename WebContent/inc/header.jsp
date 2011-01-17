@@ -45,11 +45,11 @@ $(document).ready(function () {
   <ul>
     <li class="home"><a href="#nogo">Home</a></li>
     <li class="news"><a href="#nogo">News</a></li>
-    <li class="events"><a href="#nogo">Events Calendar</a></li>
+    <li class="events"><a href="Events.html">Events Calendar</a></li>
     <li class="members"><a href="#nogo">Members</a></li>
     <li class="photo"><a href="Photo.html">Photo Gallery</a></li>
     <li class="video"><a href="Videos.html">Video Gallery</a></li>
-    <li class="weather"><a href="#nogo">Weather</a></li>
+    <li class="weather"><a href="Weather.html">Weather</a></li>
     <li class="forum"><a href="#nogo">Forum</a></li>
     <li class="guestbook"><a href="#nogo">Guestbook</a></li>
     <li class="contact"><a href="#nogo">Contact us</a></li>
