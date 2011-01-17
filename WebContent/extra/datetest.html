@@ -1,0 +1,338 @@
+<html>
+
+<script type="text/javascript" src="js/jquery-core/jquery-1.4.2.min.js"></script>
+
+<script type="text/javascript" src="js/lib/jshashtable-2.1.js"></script>
+
+<body>
+<script type="text/javascript">
+$(document).ready(function(){
+
+var testHash = new Hashtable();
+testHash.put(1,"foo");
+
+var hashKeys = testHash.keys();
+//alert(hashKeys.length);
+
+//var boolTest = true;
+var myBoolean = new Boolean(true);
+
+//alert(boolTest);
+if(myBoolean != null && myBoolean == true){
+	//alert("yes!");
+}
+
+var d = new Date(2010,0,1,0,0,0,0);
+var d2 = new Date(2010,7,29,0,0,0,0);
+var d3 = new Date(2010,7,30,0,0,0,0);
+print(d2 + " last day same week " + lastDayInSameWeek(d2) + ", diff days " + days_between(d2,lastDayInSameWeek(d2)));
+print("diff d2 & d3 = " + days_between(d2,d3));
+
+var d4 = new Date(2010,11,27,0,0,0,0);
+print(d4 + " first day next week " + firstDayNextWeek(d4) + ", diff days " + days_between(d4,firstDayNextWeek(d4)));
+
+var d5 = new Date(2010,5,10,14,20,0,0);
+var d6 = new Date(2010,5,5,15,0,0,0);
+print("diff d5 & d6 = " + days_between(d5,d6) + ", diff direction d5 & d6 = " + days_between_direction(d5,d6));
+
+var d7 = new Date(2010,10,30,0,0,0,0);
+var d8 = getNextDay(d7);
+print(d7 + " next day is " + d8);
+
+var d9 = new Date(2010,5,2,0,0,0,0);
+var d10 = firstDaySameWeek(d9);
+print(d9 + " first day same week " + d10);
+
+var d11 = new Date(2010,2,10,0,0,0,0);
+var d12 = new Date(2010,4,1,0,0,0,0);
+var d13 = new Date(2010,6,23,0,0,0,0);
+print("Is d11 between d12 and d13: " + isBetween(d11,d12,d13));
+
+var prevMonth = getPreviousMonth(d);
+print(prevMonth.toString() + ", # days = " + getDaysInMonth(prevMonth));
+
+print(d.toString() + ", # days = " + getDaysInMonth(d));
+//printDays(d);
+print("<br>");
+
+var nextMonth = getNextMonth(d);
+for(var i=0; i<11; i++){
+	print(nextMonth + ", # days = " + getDaysInMonth(nextMonth));
+	//printDays(nextMonth);
+	print("<br>");
+	nextMonth = getNextMonth(nextMonth);
+}
+
+function clone(date){
+	var dt = new Date();
+	dt.setFullYear(date.getFullYear());
+	dt.setMonth(date.getMonth());
+	dt.setDate(date.getDate());
+	dt.setHours(date.getHours());
+	dt.setMinutes(date.getMinutes());
+	dt.setSeconds(date.getSeconds());
+	dt.setMilliseconds(date.getMilliseconds());
+	return dt;
+}
+
+function getNextMonth(date){
+	var dt = new Date(0,0,1,0,0,0,0);
+	if(date.getMonth() == 11){
+		dt.setFullYear(date.getFullYear()+1);
+		dt.setMonth(0);
+	}else{
+		dt.setFullYear(date.getFullYear());
+		dt.setMonth(date.getMonth()+1);
+	}
+	return dt;
+}
+
+function getPreviousMonth(date){
+	var dt = new Date(0,0,1,0,0,0,0);
+	if(dt.getMonth() == 0){
+		dt.setFullYear(date.getFullYear()-1);
+		dt.setMonth(11);
+	}else{
+		dt.setFullYear(date.getFullYear());
+		dt.setMonth(date.getMonth()-1);
+	}
+	return dt;
+}
+
+function getDaysInMonth(date){
+	var dt = new Date(date.getFullYear(),date.getMonth(),1,0,0,0,0);
+	var month = dt.getMonth();
+	var lastMonth = month;
+	var dayCount = 0;
+	while(lastMonth == month){
+		dayCount++;
+		dt.setDate(dt.getDate()+1);
+		month = dt.getMonth();
+	}
+	return dayCount;
+}
+
+// get date set to first day of same week (Sunday). returned date might be in the previous month or year
+function firstDaySameWeek(date){
+
+	// week index for the set day (from 0-6)
+	var dayIndex = date.getDay();
+	// day of the month (from 1-31)
+	var dayNum = date.getDate();
+	// month index for the set month (from 0-11)
+	var monthNum = date.getMonth();
+	// the 4-digit year
+	var yearNum = date.getFullYear();
+	// number of days in month
+	var daysInMonth = getDaysInMonth(date);	
+	
+	if(dayIndex == 0){
+		// this is the first day of the week! (Sunday)
+		return new Date(yearNum,monthNum,dayNum,0,0,0,0);
+	}
+	var backDayNum = dayNum - dayIndex;
+	if(backDayNum < 1){
+		// previous month
+		var prevMonthDt = getPreviousMonth(date);
+		var daysPrevMonth = getDaysInMonth(prevMonthDt);
+		var newDay = daysPrevMonth + backDayNum;
+		if(monthNum == 0){
+			// previous year
+			return new Date(yearNum-1,11,newDay,0,0,0,0);
+		}else{
+			// same year
+			//alert("year: " + yearNum + ", month: " + 11 + ", day: " + newDay);
+			return new Date(yearNum,monthNum-1,newDay,0,0,0,0);
+		}
+	}else{
+		// same month & year
+		return new Date(yearNum,monthNum,backDayNum,0,0,0,0);
+	}
+	
+}
+
+function lastDayInSameWeek(date){
+			
+	// week index for the set day (from 0-6)
+	var dayIndex = date.getDay();
+	// day of the month (from 1-31)
+	var dayNum = date.getDate();
+	// month index for the set month (from 0-11)
+	var monthNum = date.getMonth();
+	// the 4-digit year
+	var yearNum = date.getFullYear();
+	// number of days in month
+	var daysInMonth = getDaysInMonth(date);
+	
+	if(dayIndex == 6){
+		// this is the last day of the week! (Saturday)
+		return new Date(yearNum,monthNum,dayNum,0,0,0,0);
+	}
+	
+	var daysTillEndWeek = 6 - dayIndex;
+	
+	if((dayNum + daysTillEndWeek) > daysInMonth){
+		// next month
+		var newDay = daysTillEndWeek - (daysInMonth - dayNum);
+		if(yearNum == 11){
+			// next year
+			return new Date(yearNum+1,monthNum+1,newDay,0,0,0,0);
+		}else{
+			// same year
+			return new Date(yearNum,monthNum+1,newDay,0,0,0,0);
+		}
+	}else{
+		// same month & year
+		return new Date(yearNum,monthNum,dayNum+daysTillEndWeek,0,0,0,0);
+	}
+			
+}
+
+// get date set to first day of next week. returned date might be in the next month or year
+function firstDayNextWeek(date){
+
+	// week index for the set day (from 0-6)
+	var dayIndex = date.getDay();
+	// day of the month (from 1-31)
+	var dayNum = date.getDate();
+	// month index for the set month (from 0-11)
+	var monthNum = date.getMonth();
+	// the 4-digit year
+	var yearNum = date.getFullYear();
+	// number of days in month
+	var daysInMonth = getDaysInMonth(date);	
+	
+	if(dayIndex == 0){
+		// this is the first day of the week! (Sunday)
+		return new Date(yearNum,monthNum,dayNum,0,0,0,0);
+	}
+	
+	var daysTillEndWeek = 6 - dayIndex;
+	var nextMonday = dayNum + daysTillEndWeek + 1;
+	
+	if(nextMonday > daysInMonth){
+		// next month
+		var newDay = daysTillEndWeek - (daysInMonth - dayNum) + 1;
+		if(yearNum == 11){
+			// next year
+			return new Date(yearNum+1,monthNum+1,newDay,0,0,0,0);
+		}else{
+			// same year
+			return new Date(yearNum,monthNum+1,newDay,0,0,0,0);
+		}
+	}else{
+		// same month & year
+		return new Date(yearNum,monthNum,nextMonday,0,0,0,0);
+	}
+}
+
+// get Date object of next day. may be in next month or year
+function getNextDay(date){
+
+	// week index for the set day (from 0-6)
+	var dayIndex = date.getDay();
+	// day of the month (from 1-31)
+	var dayNum = date.getDate();
+	// month index for the set month (from 0-11)
+	var monthNum = date.getMonth();
+	// the 4-digit year
+	var yearNum = date.getFullYear();
+	// number of days in month
+	var daysInMonth = getDaysInMonth(date);	
+	
+	if(dayNum == daysInMonth){
+		// next month
+		if(yearNum == 11){
+			// next year
+			return new Date(yearNum+1,monthNum+1,1,0,0,0,0);
+		}else{
+			// same year
+			return new Date(yearNum,monthNum+1,1,0,0,0,0);
+		}
+	}else{
+		// same month & year
+		return new Date(yearNum,monthNum,dayNum+1,0,0,0,0);
+	}
+
+}
+
+// true if date1 is between date2 & date3, or date1 is same day as date2 or date3, false otherwise.
+function isBetween(date1,date2,date3){
+	if(date1 == null || date2 == null || date3 == null){
+		return false;
+	}
+	if(days_between_direction(date1, date2) <= 0 && days_between_direction(date1, date3) >= 0){
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Number of days between. Hours, min, sec, and milli ignored.
+ */
+function days_between(date1, date2) {
+
+    // The number of milliseconds in one day
+    var ONE_DAY = 1000 * 60 * 60 * 24;
+	
+	var dt1 = new Date(date1.getFullYear(),date1.getMonth(),date1.getDate(),0,0,0,0);
+	var dt2 = new Date(date2.getFullYear(),date2.getMonth(),date2.getDate(),0,0,0,0);
+
+    // Convert both dates to milliseconds
+    var date1_ms = dt1.getTime();
+    var date2_ms = dt2.getTime();
+
+    // Calculate the difference in milliseconds
+    var difference_ms = Math.abs(date2_ms - date1_ms);
+	
+	var diff_day = difference_ms/ONE_DAY;
+	
+	return diff_day;
+
+}
+
+// can return negatives so you can tell if date2 is before or after date1
+function days_between_direction(date1, date2) {
+
+    // The number of milliseconds in one day
+    var ONE_DAY = 1000 * 60 * 60 * 24;
+	
+	var dt1 = new Date(date1.getFullYear(),date1.getMonth(),date1.getDate(),0,0,0,0);
+	var dt2 = new Date(date2.getFullYear(),date2.getMonth(),date2.getDate(),0,0,0,0);	
+
+    // Convert both dates to milliseconds
+    var date1_ms = dt1.getTime();
+    var date2_ms = dt2.getTime();
+
+    // Calculate the difference in milliseconds
+    var difference_ms = date2_ms - date1_ms;
+	
+	var diff_day = difference_ms/ONE_DAY;
+	
+	return diff_day;
+
+}
+
+function printDays(date){
+	var dt = new Date(date.getFullYear(),date.getMonth(),1,0,0,0,0);
+	var month = dt.getMonth();
+	var lastMonth = month;
+	while(lastMonth == month){
+		print("Day: " + dt.getDate() + ", " + dt);
+		dt.setDate(dt.getDate()+1);
+		month = dt.getMonth();
+	}
+}
+
+function print(s){
+	var elm = document.getElementById("out");
+	elm.innerHTML += s + "<br>";
+}
+
+});
+</script>
+
+<div id="out"></div>
+
+</body>
+</html>
