@@ -1,0 +1,78 @@
+
+<html>
+<head>
+<script type="text/javascript" language="javascript">
+var pays = new Array; //nouveau tableau
+pays[0] = new Array("p0", "pays0"); //nouveau tableau, on va donc avoir pays[0][0]="p0"
+pays[1] = new Array("p1", "pays1");
+pays[2] = new Array("p2", "pays2");
+
+var ville=new Array;
+// pays0
+ville["p0"] = new Array;
+ville["p0"][0] = new Array("p0v0", "pays0-ville0");
+ville["p0"][1] = new Array("p0v1", "pays0-ville1");
+
+//pays1
+ville["p1"]=new Array;
+ville["p1"][0] = new Array("p1v0", "pays1-ville0");
+ville["p1"][1] = new Array("p1v1", "pays1-ville1");
+
+//pays2
+ville["p2"] = new Array;
+ville["p2"][0] = new Array("p2v0", "pays2-ville0");
+ville["p2"][1] = new Array("p2v1", "pays2-ville1");
+
+
+
+function filltheselect(liste, choix)
+{switch (liste)
+   {
+   case "listepays":
+      raz("listeville");
+
+      for (i=0; i<ville[choix].length; i++)
+         {
+         new_option = new Option(ville[choix][i][1],ville[choix][i][0]);
+         document.formu.elements["listeville"].
+ options[document.formu.elements["listeville"].length]=new_option;
+         }
+      break;
+
+   }
+}
+
+function raz(liste)
+{l=document.formu.elements[liste].length;
+for (i=l; i>=0; i--)
+   document.formu.elements[liste].options[i]=null;
+}
+</script>
+</head>
+<body>
+<form name="formu">
+
+Choisir un pays
+
+<select name="listepays" onChange='filltheselect(this.name, this.value)'>
+   <script language="javascript">
+   for (i=0; i<pays.length; i++)
+      document.write("<option value=\"" +pays[i][0]+ "\">" +pays[i][1]);
+   </script>
+</select>
+<br>
+
+Choisir une ville
+<select name="listeville" onChange='filltheselect(this.name, this.value)'>
+   <script language="javascript">
+   for (i=0; i<ville["p0"].length; i++)
+      document.write("<option value=\"" +ville["p0"][i][0]+ "\">" +ville["p0"][i][1]);
+   </script>
+</select>
+
+<br>
+
+
+</form>
+</body>
+</html>
