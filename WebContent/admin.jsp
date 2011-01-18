@@ -3,18 +3,27 @@
 <script>
 	var skt;
 	function adminDeleteUser(uid){
+		$("#admin-delete-user input#uid-u").val(uid);
+		$("#admin-delete-user input:last").val(skt);
+		return;
+		$("#admin-delete-user").submit();
+    	/*
 		$.post(
 			'DeleteUserServlet',
 			{uid:uid, code:skt},
-			function(){
-				location.reaload();
+			function(data){
+				alert(data);
 			}
-		);
+		);*/
 	}
 	$(function(){
-	var box = $("<div>");
-	box.html("<p>Please provide the application's secret code:</p><input type='password' id='skt_in' />");
-	box.attr('title', 'Secret code');
+		var form = "<form method='post' action='DeleteUserServlet' id='admin-delete-user'>"+
+				"<input type='hidden' name='uid' value='' id='uid-u'/>"+
+				"<input type='hidden' name='code' value=''/></form>";
+		var box = $("<div>");
+		box.html("<p>Please provide the application's secret code:</p><input type='password' id='skt_in' />");
+		box.attr('title', 'Secret code');
+		box.append(form);
 		box.dialog({
 			modal: true,
 			width: 350,
