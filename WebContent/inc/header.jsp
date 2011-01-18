@@ -62,9 +62,9 @@
 		<li><a href='newAscent.jsp'>Register ascent</a></li>
 		<li><a href='userMap.jsp'>Map of mountains</a></li>
 		<li class='user_menu_separator'>&nbsp;</li>
-		<li><a href='News.jsp'>News</a></li>
-		<li><a href='Events.jsp'>Events</a></li>
-		<li><a href='Members.jsp'>Members</a></li>
+		<li><a href='news.jsp'>News</a></li>
+		<li><a href='events.jsp'>Events</a></li>
+		<li><a href='users.jsp'>Members</a></li>
 		<li><a href='weather.jsp'>Weather</a></li>
 		<li><a href='Forum.jsp'>Forum</a></li>
 	</ul>

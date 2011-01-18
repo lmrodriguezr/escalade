@@ -4,38 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Climbing Events</title>
 
-<link rel="stylesheet" type="text/css" href="css/frontierCalendar/jquery-frontier-cal-1.3.2.css" />
+<link rel="stylesheet" type="text/css" href="lib/css/frontierCalendar/jquery-frontier-cal-1.3.2.css" />
+<link rel="stylesheet" type="text/css" href="lib/css/colorpicker/colorpicker.css" />
+<link rel="stylesheet" type="text/css" href="lib/css/extra/jquery-ui/smoothness/jquery-ui-1.8.1.custom.css" />
+<script type="text/javascript" src="lib/extra/jquery-core/jquery-1.4.2-ie-fix.min.js"></script>
+<script type="text/javascript" src="lib/extra/jquery-ui/smoothness/jquery-ui-1.8.1.custom.min.js"></script>
+<script type="text/javascript" src="lib/extra/colorpicker/colorpicker.js"></script>
+<script type="text/javascript" src="lib/extra/jquery-qtip-1.0.0-rc3140944/jquery.qtip-1.0.js"></script>
+<script type="text/javascript" src="lib/extra/lib/jshashtable-2.1.js"></script>
+<script type="text/javascript" src="lib/extra/frontierCalendar/jquery-frontier-cal-1.3.2.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="css/colorpicker/colorpicker.css" />
-
-<link rel="stylesheet" type="text/css" href="css/jquery-ui/smoothness/jquery-ui-1.8.1.custom.css" />
-
-<script type="text/javascript" src="js/jquery-core/jquery-1.4.2-ie-fix.min.js"></script>
-
-<script type="text/javascript" src="js/jquery-ui/smoothness/jquery-ui-1.8.1.custom.min.js"></script>
-
-<script type="text/javascript" src="js/colorpicker/colorpicker.js"></script>
-
-<script type="text/javascript" src="js/jquery-qtip-1.0.0-rc3140944/jquery.qtip-1.0.js"></script>
-
-<script type="text/javascript" src="js/lib/jshashtable-2.1.js"></script>
-
-<script type="text/javascript" src="js/frontierCalendar/jquery-frontier-cal-1.3.2.min.js"></script>
-
-</head>
-<body style="background-color: #aaaaaa;">
-
-<style type="text/css" media="screen">
-
-body { font-size: 62.5%; }
-.shadow {
-	-moz-box-shadow: 3px 3px 4px #aaaaaa;
-	-webkit-box-shadow: 3px 3px 4px #aaaaaa;
-	box-shadow: 3px 3px 4px #aaaaaa;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa')";
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa');
+<style>
+body{
+font-size: 10px;
 }
 </style>
+</head>
+<body style="background-color: #aaaaaa;">
 
 <script type="text/javascript">
 $(document).ready(function(){	
@@ -510,7 +495,7 @@ $(document).ready(function(){
             Click the calendar to add new Climbing events.
             
             <br><br>
-            <a href="peaks.jsp">Back Home</a>
+            <a href="./">Back Home</a>
 			</b>
 		</div>
 		
@@ -524,7 +509,7 @@ $(document).ready(function(){
 			&nbsp;&nbsp;&nbsp;
 			<button id="BtnDeleteAll">Delete All</button>
 			<button id="BtnICalTest">iCal Test</button>
-			<input type="text" id="iCalSource" size="30" value="extra/fifa-world-cup-2010.ics"/>
+			<input type="text" id="iCalSource" size="30" value="lib/peak-2010.ics"/>
 		</div>
 
 		<br>
@@ -542,12 +527,12 @@ $(document).ready(function(){
 		<div id="calDebug"></div>
 
 		<!-- Add event modal form -->
-		<style type="text/css">
+		<!-- <style type="text/css">
 			//label, input.text, select { display:block; }
 			fieldset { padding:0; border:0; margin-top:25px; }
 			.ui-dialog .ui-state-error { padding: .3em; }
 			.validateTips { border: 1px solid transparent; padding: 0.3em; }
-		</style>
+		</style>-->
 		<div id="add-event-form" title="Add New Event">
 			<p class="validateTips">All form fields are required.</p>
 			<form>
@@ -673,7 +658,7 @@ $(document).ready(function(){
 	
 </div>
 
-<div position="center" padding: -20px;>
+<div>
 <p><b>Share this calendar on social networks.</b></p>
 
 <div>

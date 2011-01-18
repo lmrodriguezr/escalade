@@ -28,9 +28,9 @@ $(function () {
 <div class="jimgMenu">
 	<ul>
 		<li class="jimginto home"><a href="peaks.jsp">Home</a></li>
-		<li class="jimginto news"><a href="News.html">News</a></li>
-		<li class="jimginto events"><a href="Events.html">Events Calendar</a></li>
-		<li class="jimginto members"><a href="Members.jsp">Members</a></li>
+		<li class="jimginto news"><a href="news.jsp">News</a></li>
+		<li class="jimginto events"><a href="events.jsp">Events Calendar</a></li>
+		<li class="jimginto members"><a href="users.jsp">Members</a></li>
 		<li class="jimginto photo"><a href="Photo.html">Photo Gallery</a></li>
 		<li class="jimginto video"><a href="Videos.html">Video Gallery</a></li>
 		<li class="jimginto weather"><a href="weather.jsps">Weather</a></li>

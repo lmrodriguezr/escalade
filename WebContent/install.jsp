@@ -66,6 +66,10 @@
 		<p style='margin: 0 7em; text-align: right;'>Enjoy!,<br />
 		The Peak team</p>
 		<form action="InstallServlet" method="post">
+		<h2>App data</h2>
+		<label>A secret code (should be very secure!):<br />
+		<input type='password' name='app_code' /></label><br />
+		<br />
 		<h2>Server data</h2>
 		<label>MySQL server:<br />
 		<input type="text" name="mysql_server" value="localhost" /></label><br />

@@ -2,6 +2,7 @@ package sevlets;
 
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.HashSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -107,12 +108,18 @@ public class DeleteAscentServlet extends HttpServlet {
 				}
 				sessionDB.delete(voie);
 		}
-		// Update user
-		grimpeur.updateFalaises(sessionFactory);
 		
-		// And delete
+		// Delete ascent
+		grimpeur.setFalaises(new HashSet<Falaise>());
+		sessionDB.update(grimpeur); //<- to avoid constrainst restrictions
 		sessionDB.delete(ascension);
 		sessionDB.flush();
+		sessionDB.close();
+		sessionDB = null;
+		
+		// And update user
+		grimpeur.updateFalaises(sessionFactory);
+		
 		dispatcher.forward(request, response);
 	} finally {
 		if (sessionDB != null) {

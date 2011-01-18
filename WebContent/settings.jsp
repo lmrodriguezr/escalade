@@ -37,7 +37,8 @@
 <label>Gender<br />
    <select name="gender">
    <option value=" ">  </option>
-   <option value='<%=gender%>'>Male</option>
+   <option <%=gender.equals("Male")?"selected='selected'":""%>>Male</option>
+   <option <%=gender.equals("Female")?"selected='selected'":""%>>Female</option>
    </select></label><br />
  <br /> 
 <label>Age<br />

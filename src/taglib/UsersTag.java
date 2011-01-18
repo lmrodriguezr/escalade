@@ -11,6 +11,7 @@ public class UsersTag extends TagSupport {
 	private static final long serialVersionUID = 1L;
 	protected String userLogin;
 	protected String asUserLogin;
+	protected int limit;
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -19,6 +20,7 @@ public class UsersTag extends TagSupport {
 			Integer uId = (int) (Math.random()*10000);
 			String req = "{ format: \"json-complete\"";
 			if(userLogin!=null) req += ", user: \""+userLogin+"\"";
+			if(limit!=0) req += ", limit: " + limit;
 			req += " }";
 			Boolean granted = (userLogin!=null && asUserLogin!=null && userLogin==asUserLogin);
 			
@@ -76,5 +78,14 @@ public class UsersTag extends TagSupport {
 	}
 	public String getAsUserLogin(){
 		return asUserLogin;
+	}
+	public void setLimit(int limit){
+		this.limit = limit;
+	}
+	public void setLimit(String limit){
+		this.limit = Integer.parseInt(limit);
+	}
+	public int getLimit(){
+		return limit;
 	}
 }

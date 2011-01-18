@@ -61,5 +61,10 @@
     <name>users</name>
     <tag-class>taglib.UsersTag</tag-class>
     <body-content>empty</body-content>
+    <attribute>
+      <name>limit</name>
+      <required>false</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
   </tag>
 </taglib>
