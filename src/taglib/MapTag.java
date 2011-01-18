@@ -85,21 +85,21 @@ public class MapTag extends TagSupport {
 											"if (status == google.maps.GeocoderStatus.OK) {\n" + 
 												"mountains_loc.push(results[0].geometry);\n" + 
 												"if(mountains_no == mountains_loc_no){ // Could differ from mountains_loc.length\n" + 
-													"var latlng = new google.maps.LatLng(\n" + 
-														"mountains_loc[0].location.xa,\n" + 
-														"mountains_loc[0].location.za\n" + 
+													"var latlng = new google.maps.LatLng(" + 
+														"mountains_loc[0].location.wa,\n" + // xa
+														"mountains_loc[0].location.ya\n" + // za
 													");\n" + 
 													"var myOpts = {" + 
-														"zoom: "+zoom+"," +
-														"minZoom: 2," + 
-														"center: latlng," + 
+														"zoom: "+zoom+", " +
+														"minZoom: 2, " + 
+														"center: latlng, " + 
 														"mapTypeId: google.maps.MapTypeId.HYBRID" + 
 													"};\n" + 
 													"map = new google.maps.Map(document.getElementById(\"map-canvas-"+mapId+"\"), myOpts);\n" + 
 													"for ( i in mountains_loc ){\n" + 
 														"var coord = new google.maps.LatLng(\n" + 
-																"mountains_loc[i].location.xa,\n" + 
-																"mountains_loc[i].location.za\n" + 
+																"mountains_loc[i].location.wa,\n" + // xa 
+																"mountains_loc[i].location.ya\n" + // za
 														");\n" + 
 														"marker = new google.maps.Marker({" + 
 															"position: coord," + 
