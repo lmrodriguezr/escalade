@@ -1,7 +1,42 @@
 <%@ include file="inc/header.jsp" %>
 
+<script type="text/javascript">
+$(function () {
 
+  // Chercher les elements a etirer
+  $('div.jimgMenu ul li.jimginto a').hover(function() {
+    // Si l'element est anime
+    if ($(this).is(':animated')) {
+      $(this).stop().animate({width: "15em"}, {duration: 450, easing:"easeOutQuad"});
+    } else {
+      // l'etirer vite
+      $(this).stop().animate({width: "15em"}, {duration: 400, easing:"easeOutQuad"});
+    }
+  }, function () {
+    // le ramener
+    if ($(this).is(':animated')) {
+      $(this).stop().animate({width: "4em"}, {duration: 400, easing:"easeInOutQuad"})
+    } else {
+      // le ramener doucement
+      $(this).stop('animated:').animate({width: "4em"}, {duration: 450, easing:"easeInOutQuad"});
+    }
+  });
+  $('div.jimgMenu ul li.forum a').animate({width: "22em"}, {duration: 450, easing:"easeInOutQuad"});
+});
+</script>
 
+<div class="jimgMenu">
+	<ul>
+		<li class="jimginto home"><a href="peaks.jsp">Home</a></li>
+		<li class="jimginto news"><a href="News.html">News</a></li>
+		<li class="jimginto events"><a href="Events.html">Events Calendar</a></li>
+		<li class="jimginto members"><a href="Members.jsp">Members</a></li>
+		<li class="jimginto photo"><a href="Photo.html">Photo Gallery</a></li>
+		<li class="jimginto video"><a href="Videos.html">Video Gallery</a></li>
+		<li class="jimginto weather"><a href="weather.jsps">Weather</a></li>
+		<li class="forum"><a href="Forum.html">Forum</a></li>
+	</ul>
+</div>
 
 <h2>Registered mountains</h2>
 <peak:map/>

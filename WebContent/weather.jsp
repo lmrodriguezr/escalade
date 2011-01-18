@@ -1,13 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-
-<link rel="stylesheet" type="text/css" href="css/frontierCalendar/jquery-frontier-cal-1.3.2.css" />
-
-<title>Weather Information</title>
-
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%@ page pageEncoding="UTF-8" %>
+<%@ include file="inc/header.jsp" %>
 
 <script language="javascript" type="text/javascript">
 
@@ -20,7 +12,7 @@ if(index < 1)
 }
 else {
    var xhr_object = null;
-	
+
    if(window.XMLHttpRequest) // Firefox
       xhr_object = new XMLHttpRequest();
    else if(window.ActiveXObject) // Internet Explorer
@@ -31,7 +23,7 @@ else {
    }
 
    xhr_object.open("POST", "http://www.allosurf.net/ajax/species.php", true);
-	
+
    xhr_object.onreadystatechange = function() {
       if(xhr_object.readyState == 4)
 	  {
@@ -86,23 +78,6 @@ function file(fichier)
      }
 
 </script>
-
-<style type="">
-body { font-size: 62.5%; }
-.shadow {
-	-moz-box-shadow: 3px 3px 4px #aaaaaa;
-	-webkit-box-shadow: 3px 3px 4px #aaaaaa;
-	box-shadow: 3px 3px 4px #aaaaaa;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa')";
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#aaaaaa');
-}
-</style>
-
-</head>
-
-		
-<body style="background-color: #aaaaaa;">
-
 <h1 style="font-size: 30px; font-weight: bold;">Weather Information</h1>
 
 <div id="tabs">
@@ -121,10 +96,9 @@ body { font-size: 62.5%; }
             <a href="peaks.jsp">Back Home</a>
 			</b>
 		</div>
-		
+
 <div class="shadow" style="border: 1px solid #aaaaaa; padding: 3px;">
 
-<b>
 
 				    <table width="100%" border="0" cellspacing="2" cellpadding="2">
 
@@ -138,151 +112,151 @@ body { font-size: 62.5%; }
                       
                       <tr>
                         <td>
-		
+<form class="CenteredForm" name="form_selects2beach2" id="form_selects2beach2" action="" method="post" onsubmit="return false;">
 		            <table width="48%" border="0"  cellspacing="0" cellpadding="0">
-                      <form class="CenteredForm" name="form_selects2beach2" id="form_selects2beach2" action="" method="" onsubmit="return false;">
+                      
                         <tr>
                         
                           <td><select name="spotbeach1" id="spotbeach1"   class="deroulDivers"  onchange="paysspotajax(this.form, document.getElementById('spotbeach1'), document.getElementById('spotbeach2'), 'typespot12externe');">
                               <option value="0">Select a country :</option>
 
                               <option selected="selected" value="1">France</option>
-	
+
                               <option  value="247">Afrique du Sud</option>
-		
+
                               <option  value="77">Algérie</option>
                               							
-							
+
                               <option  value="10">Allemagne</option>
                               							
-							
+
                               <option  value="33">Australie</option>
                               							
-							
+
                               <option  value="37">Barbade</option>
 
                               							
-							
+
                               <option  value="48">Brésil</option>
                               							
-							
+
                               <option  value="54">Canada</option>
                               							
-							
+
                               <option  value="68">Cap-Vert</option>
                               							
-							
+
                               <option  value="62">Chili</option>
                               							
-							
+
                               <option  value="70">Chypre</option>
                               							
-							
+
                               <option  value="65">Colombie</option>
 
                               							
-							
+
                               <option  value="58">Congo</option>
                               							
-							
+
                               <option  value="66">Costa Rica</option>
                               							
-							
+
                               <option  value="80">Égypte</option>
                               							
-							
+
                               <option  value="78">Équateur</option>
                               							
-							
+
                               <option  value="2">Espagne</option>
                               							
-							
+
                               <option  value="236">États-Unis</option>
 
                               							
-							
+
                               <option  value="96">Ghana</option>
                               							
-							
+
                               <option  value="103">Grèce</option>
                               							
-							
+
                               <option  value="101">Guadeloupe</option>
                               							
-							
+
                               <option  value="117">Inde</option>
                               							
-							
+
                               <option  value="113">Indonésie</option>
                               							
-							
+
                               <option  value="114">Irlande</option>
 
                               							
-							
+
                               <option  value="115">Israël</option>
                               							
-							
+
                               <option  value="122">Italie</option>
                               							
-							
+
                               <option  value="152">Madagascar</option>
                               							
-							
+
                               <option  value="4">Maroc</option>
                               							
-							
+
                               <option  value="160">Martinique</option>
                               							
-							
+
                               <option  value="164">Maurice</option>
 
                               							
-							
+
                               <option  value="167">Mexique</option>
                               							
-							
+
                               <option  value="175">Nicaragua</option>
                               							
-							
+
                               <option  value="171">Nouvelle-Calédonie</option>
                               							
-							
+
                               <option  value="181">Nouvelle-Zélande</option>
                               							
-							
+
                               <option  value="183">Panama</option>
                               							
-							
+
                               <option  value="176">Pays-Bas</option>
 
                               							
-							
+
                               <option  value="185">Polynésie Française</option>
                               							
-							
+
                               <option  value="194">Portugal</option>
                               							
-							
+
                               <option  value="76">République Dominicaine</option>
                               							
-							
+
                               <option  value="198">Réunion</option>
                               							
-							
+
                               <option  value="92">Royaume-Uni</option>
                               							
-							
+
                               <option  value="214">Sénégal</option>
 
                               							
-							
+
                               <option  value="59">Suisse</option>
                               							
-							
+
                               <option  value="224">Thaïlande</option>
                               							
-							
+
                               <option  value="228">Tunisie</option>
                           </select></td>
                         </tr>
@@ -828,10 +802,6 @@ body { font-size: 62.5%; }
 
                             </select>
                             
-                            </div>
-                            
-                            </b>
-                            
                             
  <select name="select" class="deroulDivers" onchange="document.getElementById('mb1').src='http://www.allosurf.net/extern/mb1.php?qui=&id='+spotid+'&ventunite='+this.value; ventunite=this.value;  document.getElementById('textacoller1').value=coller1+spotid+'&ventunite='+this.value+coller2;  ; ">
  <option value="nd">vent en noeuds</option>
@@ -840,9 +810,8 @@ body { font-size: 62.5%; }
 </select>			    </td>
                         </tr>
 
-                      </form>
                     </table> 
-					
+</form>
                   </td>
                       </tr>
                       <tr>
@@ -877,7 +846,7 @@ body { font-size: 62.5%; }
 
 <option value="1">Océan Atlantique (évolution cyclones)</option>
 </select>
-	 
+
 <select name="regionmembres"  class="deroulDivers"  onchange="vent = this.value; document.getElementById('mb2').src = 'http://www.allosurf.net/extern/mb2.php?qui=&houle='+houle+'&vent=' + vent;    document.getElementById('textacoller2').value=coller1b+houle+'&vent='+vent+coller2b;    ">
 <option value="">Prévisions vent à afficher</option>
 <option value="1">Golfe de Gascogne</option>
@@ -895,8 +864,8 @@ body { font-size: 62.5%; }
 	var vent=1;
 	var houle=2;
 	</script>
-		
-					
+
+
      </td>
                       </tr>
                       <tr>
@@ -908,8 +877,7 @@ body { font-size: 62.5%; }
                     </table>
                 
                 
-                <div position="center" padding: -20px;>
-<p><b>Share this weather report on social networks.</p></b>
+<p><b>Share this weather report on social networks.</b></p>
 <div>
 <script type="text/javascript">
   addthis_url    = location.href;   
@@ -923,14 +891,6 @@ body { font-size: 62.5%; }
 		</div>
 		<div class="blockbas block644bas"></div>
 	</div>
-	
-	
-
-</div>
 
 
-
-</body>
-
-</html>
-				
+<%@ include file="inc/footer.jsp" %>

@@ -13,7 +13,9 @@ $headers = 'From: '.$email.'' . "\r\n" .
 	'Content-type: text/html; charset=utf-8' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-mail("nadia.znassi@gmail.com", $subject, $body, $headers);
+mail("lmrodriguezr@gmail.com", $subject, $body, $headers);
+header("Location: ../;5");
+
 ?>
 <!--Display a thankyou message in the callback -->
 <div id="mail_response">

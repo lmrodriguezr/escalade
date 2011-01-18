@@ -10,3 +10,6 @@
 <link rel='stylesheet' href='lib/css/escalade.css' type='text/css' />
 <link rel='stylesheet' href='lib/css/cupertino/jquery-ui-1.8.7.custom.css' type='text/css' />
 <link rel='stylesheet' href='lib/css/flexigrid/flexigrid.css' type='text/css' />
+<link rel='stylesheet' href='lib/css/jimgMenu.css' type="text/css" />
+<link rel='stylesheet' href='lib/css/contact.css' type="text/css" />
+

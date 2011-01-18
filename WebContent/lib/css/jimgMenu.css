@@ -1,0 +1,87 @@
+
+.jimgMenu {
+	position: relative;
+	width: 70%;
+	height: 240px;
+	overflow: hidden;
+	margin: 25px 15% 0 15%;
+	border: 2px solid black;
+	padding: 0;
+	max-width: 800px;
+}
+
+.jimgMenu ul {
+	list-style: none;
+	margin: 0px;
+	display: block;
+	height: 200px;
+	width: 150%;
+	padding: 0;
+}
+
+.jimgMenu ul li {
+	float: left;
+}
+
+.jimgMenu ul li a {
+	text-indent: -1000px;
+	background:#FFFFFF none repeat scroll 0%;
+	/*border-right: 2px solid #fff;*/
+	cursor:pointer;
+	display:block;
+	overflow:hidden;
+	/*width:78px;*/
+	width: 4em;
+	height: 240px;
+	
+}
+
+.jimgMenu ul li.home a {
+	background: url(img/jimg/Home.PNG) repeat scroll 0%;
+}
+
+.jimgMenu ul li.news a {
+	background: url(img/jimg/News.PNG) repeat scroll 0%;
+}
+
+.jimgMenu ul li.events a {
+	background: url(img/jimg/Events.PNG) repeat scroll 0%;
+}
+.jimgMenu ul li.members a {
+	background: url(img/jimg/Members.PNG) repeat scroll 0%;
+}
+
+.jimgMenu ul li.photo a {
+	background: url(img/jimg/Photo.PNG) repeat scroll 0%;
+	
+}
+
+.jimgMenu ul li.video a {
+	background: url(img/jimg/Videos.PNG) repeat scroll 0%;
+	
+}
+
+.jimgMenu ul li.weather a {
+	background: url(img/jimg/Weather.PNG) repeat scroll 0%;
+	
+}
+
+
+.jimgMenu ul li.forum a {
+	background: url(img/jimg/Forum.PNG) repeat scroll 0%;
+	
+}
+
+.jimgMenu ul li.guestbook a {
+	background: url(img/jimg/Guestbook.PNG) repeat scroll 0%;
+	
+}
+
+.jimgMenu ul li.contact a {
+	background: url(img/jimg/Contact.PNG) repeat scroll 0%;
+	/*min-width:290px;*/
+}
+
+.clear {
+	clear: both;
+}

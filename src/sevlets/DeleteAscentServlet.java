@@ -9,7 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import me.thebio.escalade.*;
+import me.thebio.escalade.Ascension;
+import me.thebio.escalade.Falaise;
+import me.thebio.escalade.Grimpeur;
+import me.thebio.escalade.Pays;
+import me.thebio.escalade.Secteur;
+import me.thebio.escalade.Utilisateur;
+import me.thebio.escalade.Voie;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
