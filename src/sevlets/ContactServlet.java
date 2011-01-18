@@ -10,7 +10,11 @@ package sevlets;
 // this code, but you are not permitted to redistribute it as
 // "Apple sample code" after having made changes.
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Properties;
 
@@ -28,6 +32,7 @@ public class ContactServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("deprecation")
 	public void doPost(HttpServletRequest request,
                        HttpServletResponse response)
         throws IOException, ServletException
@@ -49,7 +54,11 @@ public class ContactServlet extends HttpServlet {
         String password = "peaky...";
 
         ///////// set this variable to be your desired email recipient
-        String to = "lmrodriguezr@gmail.com";
+        String mailPath = request.getRealPath("WEB-INF") + "/classes/appmail";
+		FileInputStream fstream = new FileInputStream(mailPath);
+		DataInputStream in = new DataInputStream(fstream);
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        String to = br.readLine();
 
         // these variables come from the mail form
 

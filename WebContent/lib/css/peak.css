@@ -145,6 +145,7 @@ div#user_box a:hover {
 	text-decoration: underline;
 }
 
+
 /* By tags */
 form input {
 	text-align: center;
@@ -204,6 +205,22 @@ div.error h1 {
 	font-size: 100%;
 	margin: 0 0 0.3em 0;
 }
+div.info {
+	background-color: #9297d9;
+	/*background-image: url(img/peak/error.png);*/
+	background-position: bottom left;
+	background-repeat: no-repeat;
+	color: #1c204f;
+	border: 1px solid #1c204f;
+	margin: 1em 5em;
+	padding: 0 0 0.3em 0;
+}
+div.info h1 {
+	background: #1c204f;
+	color: #9297d9;
+	font-size: 100%;
+	margin: 0 0 0.3em 0;
+}
 table.labs {
 	margin: 1em 6em;
 	text-align: center;
@@ -258,4 +275,9 @@ div.post {
 }
 .anchor_button:hover {
 	background: #c3c6ea;
+}
+.gsc-control {
+	width:80%;
+	margin: 0 10%;
+	text-align: left;
 }

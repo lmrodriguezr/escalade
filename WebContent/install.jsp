@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" %>
+	pageEncoding="UTF-8" import="java.io.*" %>
 <%@ taglib uri="/WEB-INF/peak.tld" prefix="peak"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,6 +14,14 @@
 </div>
 <div id='climber-top'>&nbsp;</div>
 <%
+	File hibernate_conf = new File(application.getRealPath("WEB-INF")
+			+ "/classes/hibernate.mysql.cfg.xml");
+	if(hibernate_conf.exists()){
+		request.getSession().setAttribute("error","Impossible to install, installation is already complete");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/peaks.jsp");
+		dispatcher.forward(request, response);
+		return;
+	}
 	String e = "";
 	Object err = request.getSession().getAttribute("error");
 	if (err != null) {
@@ -67,9 +75,11 @@
 		The Peak team</p>
 		<form action="InstallServlet" method="post">
 		<h2>App data</h2>
-		<label>A secret code (should be very secure!):<br />
+		<label>A secret code for administration purposes (should be very secure!):<br />
 		<input type='password' name='app_code' /></label><br />
 		<br />
+		<label>Your e-mail (where you will receive messages form the contact form):<br />
+		<input type='text' name='app_mail' /></label><br />
 		<h2>Server data</h2>
 		<label>MySQL server:<br />
 		<input type="text" name="mysql_server" value="localhost" /></label><br />

@@ -37,11 +37,16 @@ public class InstallServlet extends javax.servlet.http.HttpServlet implements ja
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// App data
+		String code = request.getParameter("app_code");
+		String mail = request.getParameter("app_mail");
+		
+		// Server data
 		String server = request.getParameter("mysql_server");
 		String database = request.getParameter("mysql_database");
 		String user = request.getParameter("mysql_user");
 		String passwd = request.getParameter("mysql_passwd");
-		String code = request.getParameter("app_code");
+		
 		
 		String e = "";
 		
@@ -50,6 +55,7 @@ public class InstallServlet extends javax.servlet.http.HttpServlet implements ja
 		if(user==null) user="";
 		if(passwd==null) passwd="";
 		if(code==null || code.length()==0) e+= "The code can not be empty.<br/>"; 
+		if(mail==null || mail.length()==0) e+= "The e-mail can not be empty.<br/>";
 		RequestDispatcher dispatcher;
 		
 		if(e.length()>0){
@@ -97,6 +103,14 @@ public class InstallServlet extends javax.servlet.http.HttpServlet implements ja
 		    }
 		    output.close();
 			
+		    String appmail = request.getRealPath("WEB-INF") + "/classes/appmail";
+		    File appmailF = new File(appmail);
+	        Writer appmailO = new BufferedWriter(new FileWriter(appmailF));
+	        appmailO.write(mail);
+	        appmailO.close();
+	        
+	        request.getSession().setAttribute("message", "Congratulations! <b>Peaks</b>" +
+	        		" is already up and running.  Enjoy.");
 			dispatcher = getServletContext().getRequestDispatcher("/");
 		}
 		

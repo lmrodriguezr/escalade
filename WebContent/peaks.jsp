@@ -32,7 +32,7 @@ $(function () {
 		<li class="jimginto events"><a href="events.jsp">Events Calendar</a></li>
 		<li class="jimginto members"><a href="users.jsp">Members</a></li>
 		<li class="jimginto photo"><a href="Photo.html">Photo Gallery</a></li>
-		<li class="jimginto video"><a href="Videos.html">Video Gallery</a></li>
+		<li class="jimginto video"><a href="videos.jsp">Video Gallery</a></li>
 		<li class="jimginto weather"><a href="weather.jsps">Weather</a></li>
 		<li class="forum"><a href="Forum.html">Forum</a></li>
 	</ul>

@@ -44,6 +44,14 @@
 		+ err + "</div>";
 		request.getSession().removeAttribute("error");
 	}
+	Object msg = request.getSession().getAttribute("message");
+	if (msg != null) {
+		e = "<script>\n"
+			+ "setTimeout(function () { $('#MsgId').fadeOut('slow'); }, 1000*12);\n"
+			+ "</script><div class='info' id='MsgId'><h1>Info</h1>"
+			+ msg + "</div>";
+			request.getSession().removeAttribute("message");
+	}
 	Grimpeur user = (Grimpeur) request.getSession().getAttribute("loggedUser");
 	if (user != null) {
 %>

@@ -7,12 +7,16 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import me.thebio.escalade.Ascension;
+import me.thebio.escalade.Falaise;
 import me.thebio.escalade.Grimpeur;
 
 import org.hibernate.HibernateException;
@@ -39,6 +43,7 @@ public class DeleteUserServlet extends javax.servlet.http.HttpServlet implements
 	 */
 	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/");
 		String code = request.getParameter("code");
 		String uidStr = request.getParameter("uid");
@@ -92,7 +97,13 @@ public class DeleteUserServlet extends javax.servlet.http.HttpServlet implements
 		try {
 			sessionDB = sessionFactory.openSession();
 			Grimpeur grimpeur = (Grimpeur) sessionDB.load(Grimpeur.class, uid);
+			for(Iterator<Ascension> it = grimpeur.getAscensions().iterator(); it.hasNext(); ){
+				sessionDB.delete(it.next());
+			}
+			grimpeur.setFalaises(new HashSet<Falaise>());
 			sessionDB.delete(grimpeur);
+			sessionDB.flush();
+			request.getSession().setAttribute("message","User removed successfully");
 			dispatcher.forward(request, response);
 		} finally {
 			if (sessionDB != null) {
